@@ -299,6 +299,37 @@
   border: 1px solid #928787;
   padding: 20px;
 }
+.question .question_form .question_min {
+  position: relative;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 12px;
+  font-weight: 100;
+}
+.question .question_form .question_max {
+  position: relative;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 12px;
+  font-weight: 100;
+  margin-left: 258px;
+}
+.question .question_form .range_data_container {
+  width: 90%;
+  margin-left: 5%;
+  text-align: center;
+  font-weight: 100;
+  font-size: 16px;
+}
+.question .question_form .range_data_container .range_data_from,
+.question .question_form .range_data_container .range_data_to {
+  width: 39%;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 42px;
+}
 .question form div {
   margin: 10px 0;
   cursor: pointer;

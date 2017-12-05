@@ -237,7 +237,12 @@ class App extends Component {
 				question_5: {
 					formTitle: 'Какая площадь Вам необходима?',
 					type: 'range',
-					to: 300
+					from: 0,
+					to: 300,
+					measUnit: `м${String.fromCharCode(178)}`,
+					changeFunction: function(e) {
+						this.props.onUpdateRange(e);
+					}.bind(this)
 				}
 			},
 			buttonsOptions: {
@@ -364,7 +369,7 @@ class App extends Component {
 					question_5: [
 						{
 							text: 'Далее',
-							className: 'next_button disabled',
+							className: 'next_button',
 							clickFunction: function(e){
 								this.nextQuestionClick(e, 'question_6');
 							}.bind(this)
@@ -478,6 +483,30 @@ class App extends Component {
 		window.addEventListener('load', function(){
 			this.showGreetingText();
 		}.bind(this));
+	}
+
+	componentDidUpdate(){
+		if (this.props.eventList.questions.type === 'range') {
+			let  noUiSlider =  window.noUiSlider;
+			let range = document.getElementById('range');
+			let max = Number(this.props.eventList.questions.to);
+			debugger;
+			// if(!window.rangeElement) {
+				window.rangeElement = noUiSlider.create(range, {
+					start: [0, max],
+					connect: true,
+					step: 1,
+					range: {
+						'min': 0,
+						'max': max
+					}
+				});
+				window.rangeElement.on('update', function(){
+					let rangeData = window.rangeElement.get();
+					this.props.eventList.questions.changeFunction(rangeData);
+				}.bind(this));
+			// }
+		}
 	}
 	
 	showGreetingText() {
@@ -613,6 +642,9 @@ export default connect(
 		},
 		onShowTablet: (tabletOption) => {
 			dispatch({type: 'SHOW_TABLET', payload: tabletOption});
+		},
+		onUpdateRange: (rangeData) => {
+			dispatch({type: 'UPDATE_RANGE', payload: rangeData});
 		}
 	})
 )(App);
