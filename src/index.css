@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  user-select: none;
+}
+#root {
+  margin-top: 0;
+  margin-left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: verdana;
+  position: fixed;
+  display: flex;
+  overflow: auto;
+  background: url(images/sky.jpg) no-repeat center top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#root::before {
+  content: ' ';
+  background: url(images/osen.jpg) no-repeat center top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#root::after {
+  content: ' ';
+  background: url(images/sky-light.jpg) no-repeat center top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.container {
+  width: 800px;
+  height: 450px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.7);
+}
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  text-align: center;
+  color: #404040;
+}
+.modal .crossBtn {
+  background: no-repeat;
+  box-shadow: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  color: #404040;
+}
+.modal .crossBtn p {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 100;
+}
+.modal .continueBtn {
+  font-size: 20px;
+  background: #efc031;
+  height: 40px;
+  position: relative;
+  display: block;
+  margin: 25px auto 0;
+}
+.politick .politick_container {
+  position: absolute;
+  width: 750px;
+  height: 650px;
+  left: 50%;
+  top: 100px;
+  margin-left: -400px;
+  background: white;
+  padding: 25px;
+  text-align: center;
+}
+.politick .politick_container .politick_text p {
+  margin-top: 20px;
+}
+.politick .politick_container .politick_text p:first-child {
+  font-weight: 600;
+}
+.cancel .cancel_container {
+  position: absolute;
+  left: 50%;
+  width: 440px;
+  height: 240px;
+  margin-top: 190px;
+  margin-left: -250px;
+  background: white;
+  padding: 30px;
+}
+.cancel .cancel_container .cancel_text {
+  font-size: 20px;
+}
+.cancel .cancel_container .cancel_text span {
+  display: block;
+  margin-top: 3px;
+}
+.cancel .cancel_container .cancel_text span:last-child {
+  margin-top: 25px;
+}
+.greeting {
+  height: 300px;
+  color: #465dba;
+  font-size: 60px;
+  padding-top: 20px;
+}
+.buttons {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin-top: 50px;
+}
+.buttons .disabled {
+  opacity: 0.6;
+}
+.buttons .cancel_button {
+  background: #465dba;
+  margin-left: 200px;
+}
+.buttons .ok_button {
+  background: #efc031;
+  margin-left: 100px;
+}
+.buttons .start_questions {
+  margin-left: 500px;
+  width: 200px;
+  height: 50px;
+  background: #efc031;
+}
+.buttons .next_button {
+  margin-left: 500px;
+  width: 200px;
+  height: 50px;
+  background: #efc031;
+}
+.politickLink {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  bottom: 20px;
+}
+.button {
+  border: 0;
+  width: 150px;
+  height: 50px;
+  color: white;
+  font-size: 30px;
+  vertical-align: top;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px 0px #404040;
+}
+.button:focus {
+  outline: none;
+}
+.small_text {
+  width: 100%;
+  text-align: center;
+  line-height: 90px;
+}
+.big_text {
+  width: 100%;
+  font-size: 90px;
+  text-align: center;
+}
+.tablet {
+  position: absolute;
+  width: 360px;
+  height: 520px;
+  margin-left: 30px;
+  margin-top: -100px;
+  background: url(images/golden_color.jpg) no-repeat center;
+  background-size: 90% 90%;
+}
+.tablet .ipad {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.tablet .tablet_image {
+  transition: opacity 0.2s ease-out;
+  position: absolute;
+  width: 90%;
+  height: 82%;
+  top: 9%;
+  left: 5%;
+}
+.congratulations {
+  width: 350px;
+  margin-left: 425px;
+  height: 320px;
+}
+.congratulations h1 {
+  color: #465dba;
+  line-height: 75px;
+  font-size: 40px;
+}
+.congratulations p {
+  color: #404040;
+  font-size: 13px;
+  font-weight: 600;
+}
+.congratulations .text_1 {
+  width: 88%;
+}
+.congratulations .text_1::after {
+  content: '';
+  background: url(images/smile.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  background-size: 88%;
+  position: absolute;
+  margin-top: -12px;
+  margin-left: 5px;
+}
+.congratulations .text_2 {
+  margin-top: 15px;
+}
+.congratulations h3 {
+  color: #465dba;
+  line-height: 70px;
+  font-size: 20px;
+}
+.congratulations .text_3 {
+  color: #465dba;
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: top;
+}
+.congratulations .text_4,
+.congratulations .text_5 {
+  display: inline-block;
+  width: 90%;
+  margin-left: 10px;
+  font-size: 17px;
+  font-weight: 100;
+}
+.congratulations .text_6 {
+  font-size: 11px;
+  margin-top: 20px;
+  width: 116%;
+  margin-left: -7%;
+}
+.question {
+  width: 350px;
+  margin-left: 425px;
+  height: 300px;
+  padding-top: 20px;
+  color: #404040;
+  font-weight: 600;
+}
+.question .question_title {
+  color: #465dba;
+  position: absolute;
+  width: 350px;
+}
+.question .question_form_title {
+  margin: 80px 0 50px;
+}
+.question .question_form {
+  border: 1px solid #928787;
+  padding: 20px;
+}
+.question form div {
+  margin: 10px 0;
+  cursor: pointer;
+}
+.question form div label {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.question form div input {
+  cursor: pointer;
+}
