@@ -7,15 +7,17 @@ class Questions extends Component {
 	render() {
 		let questionData = this.props.eventList.questions;
 		if (questionData.type === 'range'){
+			debugger;
+			let rangeElement = window.rangeElement ? window.rangeElement.target : <div id="range" key="range"> </div>
+			console.log(rangeElement);
 			return (
 				<div className="question">
 					<p className="question_form_title">{questionData.formTitle}</p>
 					<div className="question_form">
-						<div id="range" key="range"> </div>
 						<span className="question_min">min</span>
 						<span className="question_max">max</span>
+						{rangeElement}
 						<p className="range_data_container">
-							от
 							<span className="range_data_from">
 								{questionData.from}
 							</span>

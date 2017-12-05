@@ -490,8 +490,7 @@ class App extends Component {
 			let  noUiSlider =  window.noUiSlider;
 			let range = document.getElementById('range');
 			let max = Number(this.props.eventList.questions.to);
-			debugger;
-			// if(!window.rangeElement) {
+			if(!window.rangeElement) {
 				window.rangeElement = noUiSlider.create(range, {
 					start: [0, max],
 					connect: true,
@@ -505,7 +504,7 @@ class App extends Component {
 					let rangeData = window.rangeElement.get();
 					this.props.eventList.questions.changeFunction(rangeData);
 				}.bind(this));
-			// }
+			}
 		}
 	}
 	
