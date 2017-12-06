@@ -109,6 +109,7 @@ class App extends Component {
 			},
 			questionsOptions: {
 				question_1: {
+					questionNum: 'question_1',
 					title: 'Ответьте на несколько вопросов для более точного подбора недвижимости',
 					formTitle: 'Сколько комнат Вам необходимо?',
 					type: 'checkbox',
@@ -132,6 +133,9 @@ class App extends Component {
 					changeFunction: function(e) {
 						this.formChange(e, 'question_1');
 					}.bind(this),
+					submitFunction: function(e) {
+						this.formSubmit(e)
+					}.bind(this),
 					hoverFunction: function(e) {
 						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
 						img.style.opacity = 1;
@@ -142,6 +146,7 @@ class App extends Component {
 					}.bind(this)
 				},
 				question_2: {
+					questionNum: 'question_2',
 					formTitle: 'В каком году хотите заехать?',
 					type: 'checkbox',
 					variants: [
@@ -161,6 +166,9 @@ class App extends Component {
 					changeFunction: function(e) {
 						this.formChange(e, 'question_2');
 					}.bind(this),
+					submitFunction: function(e) {
+						this.formSubmit(e)
+					}.bind(this),
 					hoverFunction: function(e) {
 						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
 						img.style.opacity = 1;
@@ -171,6 +179,7 @@ class App extends Component {
 					}.bind(this)
 				},
 				question_3: {
+					questionNum: 'question_3',
 					formTitle: 'В каком районе хотите жить?',
 					type: 'checkbox',
 					variants: [
@@ -190,6 +199,9 @@ class App extends Component {
 					changeFunction: function(e) {
 						this.formChange(e, 'question_3');
 					}.bind(this),
+					submitFunction: function(e) {
+						this.formSubmit(e)
+					}.bind(this),
 					hoverFunction: function(e) {
 						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
 						img.style.opacity = 1;
@@ -200,6 +212,7 @@ class App extends Component {
 					}.bind(this)
 				},
 				question_4: {
+					questionNum: 'question_4',
 					formTitle: 'Что должно быть рядом?',
 					type: 'checkbox',
 					variants: [
@@ -225,6 +238,9 @@ class App extends Component {
 					changeFunction: function(e) {
 						this.formChange(e, 'question_4');
 					}.bind(this),
+					submitFunction: function(e) {
+						this.formSubmit(e)
+					}.bind(this),
 					hoverFunction: function(e) {
 						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
 						img.style.opacity = 1;
@@ -235,14 +251,16 @@ class App extends Component {
 					}.bind(this)
 				},
 				question_5: {
+					questionNum: 'range_1',
 					formTitle: 'Какая площадь Вам необходима?',
 					type: 'range',
-					from: 0,
-					to: 300,
-					measUnit: `м${String.fromCharCode(178)}`,
-					changeFunction: function(e) {
-						this.props.onUpdateRange(e);
-					}.bind(this)
+					measUnit: `м${String.fromCharCode(178)}`
+				},
+				question_6: {
+					questionNum: 'range_2',
+					formTitle: 'На какой бюджет ориентироваться?',
+					type: 'range',
+					measUnit: `млн.руб.`
 				}
 			},
 			buttonsOptions: {
@@ -318,14 +336,17 @@ class App extends Component {
 						text: 'Далее',
 						className: 'next_button disabled',
 						clickFunction: function(e){
+							this.formSubmit('question_1');
 							this.nextQuestionClick(e, 'question_2');
 						}.bind(this)
 					}],
 					question_2: [
 						{
+							parentClassName: 'questions_button',
 							text: 'Далее',
 							className: 'next_button disabled',
 							clickFunction: function(e){
+								this.formSubmit('question_2');
 								this.nextQuestionClick(e, 'question_3');
 							}.bind(this)
 						},{
@@ -338,9 +359,11 @@ class App extends Component {
 					],
 					question_3: [
 						{
+							parentClassName: 'questions_button',
 							text: 'Далее',
 							className: 'next_button disabled',
 							clickFunction: function(e){
+								this.formSubmit('question_3');
 								this.nextQuestionClick(e, 'question_4');
 							}.bind(this)
 						},{
@@ -353,10 +376,15 @@ class App extends Component {
 					],
 					question_4: [
 						{
+							parentClassName: 'questions_button',
 							text: 'Далее',
 							className: 'next_button disabled',
 							clickFunction: function(e){
+								this.formSubmit('question_4');
 								this.nextQuestionClick(e, 'question_5');
+								if(window.rangeElement) {
+									window.rangeElement = undefined;
+								}
 							}.bind(this)
 						},{
 							text: 'Назад',
@@ -368,9 +396,14 @@ class App extends Component {
 					],
 					question_5: [
 						{
+							parentClassName: 'questions_button',
 							text: 'Далее',
 							className: 'next_button',
 							clickFunction: function(e){
+								this.rangeSubmit('question_5');
+								// window.rangeElement.updateOptions(this.state.questionsOptions.question_6.rangeOptions);
+								window.rangeElement.destroy();
+								window.rangeElement = undefined;
 								this.nextQuestionClick(e, 'question_6');
 							}.bind(this)
 						},{
@@ -378,6 +411,27 @@ class App extends Component {
 							className: 'previous_button',
 							clickFunction: function(e){
 								this.previousQuestionClick('question_4');
+							}.bind(this)
+						}
+					],
+					question_6: [
+						{
+							parentClassName: 'questions_button',
+							text: 'Далее',
+							className: 'next_button',
+							clickFunction: function(e){
+								this.rangeSubmit('question_6');
+								// window.rangeElement.updateOptions(this.props.eventList.range.range_2);
+								this.nextQuestionClick(e, 'question_7');
+							}.bind(this)
+						},{
+							text: 'Назад',
+							className: 'previous_button',
+							clickFunction: function(e){
+								// window.rangeElement.updateOptions(this.props.eventList.range.range_1);
+								window.rangeElement.destroy();
+								window.rangeElement = undefined;
+								this.previousQuestionClick('question_5');
 							}.bind(this)
 						}
 					]
@@ -388,8 +442,7 @@ class App extends Component {
 					images: [
 						{
 							className: 'congratulation_image',
-							src: 'stulya.jpg',
-							opacity: '1'
+							src: 'stulya.jpg'
 						}
 					]
 				},
@@ -459,6 +512,15 @@ class App extends Component {
 							src: 'point.png'
 						}
 					]
+				},
+				question_6: {
+					images: [
+						{
+							src: 'mao.jpg'
+						},{
+							src: 'point.png'
+						}
+					]
 				}
 			}
 		};
@@ -486,25 +548,25 @@ class App extends Component {
 	}
 
 	componentDidUpdate(){
-		if (this.props.eventList.questions.type === 'range') {
+		if (this.props.eventList.questions.type === 'range' && !window.rangeElement) {
 			let  noUiSlider =  window.noUiSlider;
-			let range = document.getElementById('range');
-			let max = Number(this.props.eventList.questions.to);
-			if(!window.rangeElement) {
-				window.rangeElement = noUiSlider.create(range, {
-					start: [0, max],
-					connect: true,
-					step: 1,
-					range: {
-						'min': 0,
-						'max': max
-					}
-				});
-				window.rangeElement.on('update', function(){
-					let rangeData = window.rangeElement.get();
-					this.props.eventList.questions.changeFunction(rangeData);
-				}.bind(this));
+			let range;
+			if (this.props.eventList.questions.questionNum === 'range_1') {
+				range = document.getElementById('range_1');
+			} else if (this.props.eventList.questions.questionNum === 'range_2') {
+				range = document.getElementById('range_2');
 			}
+			window.rangeElement = noUiSlider.create(range, this.props.eventList.range[this.props.eventList.questions.questionNum]);
+			window.rangeElement.on('update', function(){
+				let rangeData = window.rangeElement.get();
+				for(let i = 0; i < rangeData.length; i++) {
+					rangeData[i] = this.props.eventList.questions.questionNum === 'range_1' 
+					? Number(rangeData[i]).toFixed(0) + '' 
+					: Number(rangeData[i]).toFixed(1) + ''
+				}
+				let rangeName = this.props.eventList.questions.questionNum;
+				this.props.onUpdateRangeData({name: rangeName, data: rangeData});
+			}.bind(this));
 		}
 	}
 	
@@ -544,6 +606,32 @@ class App extends Component {
 			}
 		}
 	};
+	
+	formSubmit(questionNum) {
+		let form = document.forms[0];
+		let answers = [];
+		for(let i = 0; i < this.state.questionsOptions[questionNum].variants.length; i++) {
+			if(form[i].checked) {
+				answers.push('checked')
+			} else {
+				answers.push('')
+			}
+		}
+		let result = {
+			name: questionNum,
+			answers: answers
+		};
+		this.props.onUpdateAnswers(result);
+	}
+	
+	rangeSubmit(questionNum) {
+		let answers = window.rangeElement.get();
+		let result = {
+			name: questionNum,
+			answers: answers
+		};
+		this.props.onUpdateAnswers(result);
+	}
 	
 	showQuestion(question) {
 		this.props.onShowQuestions(this.state.questionsOptions[question]);
@@ -644,6 +732,12 @@ export default connect(
 		},
 		onUpdateRange: (rangeData) => {
 			dispatch({type: 'UPDATE_RANGE', payload: rangeData});
+		},
+		onUpdateRangeData: (rangeData) => {
+			dispatch({type: 'UPDATE_RANGE_DATA', payload: rangeData});
+		},
+		onUpdateAnswers: (answersData) => {
+			dispatch({type: 'UPDATE_ANSWERS', payload: answersData});
 		}
 	})
 )(App);

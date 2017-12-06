@@ -5,7 +5,7 @@ class Buttons extends Component {
   render() {
     let buttonsData = this.props.eventList.buttons;
     return (
-      <div className="buttons">
+      <div className={`buttons ${buttonsData[0].parentClassName}`}>
         {buttonsData.map((btn) =>
           <button 
             key={btn.className} 

@@ -8,6 +8,8 @@ import politick from './politick';
 import congratulations from './congratulations';
 import questions from './questions';
 import tablet from './tablet';
+import range from './range';
+import answers from './answers';
 
 export default combineReducers({
 	flags,
@@ -17,5 +19,7 @@ export default combineReducers({
 	politick,
 	congratulations,
 	questions,
-	tablet
+	tablet,
+	range,
+	answers
 })

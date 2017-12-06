@@ -6,24 +6,24 @@ import '../nouislider';
 class Questions extends Component {
 	render() {
 		let questionData = this.props.eventList.questions;
+		let answers = this.props.eventList.answers[questionData.questionNum];
 		if (questionData.type === 'range'){
-			debugger;
-			let rangeElement = window.rangeElement ? window.rangeElement.target : <div id="range" key="range"> </div>
-			console.log(rangeElement);
 			return (
 				<div className="question">
 					<p className="question_form_title">{questionData.formTitle}</p>
 					<div className="question_form">
+						<div id="range_1" key="range_1"> </div>
+						<div id="range_2" key="range_2"> </div>
 						<span className="question_min">min</span>
 						<span className="question_max">max</span>
-						{rangeElement}
 						<p className="range_data_container">
+							от
 							<span className="range_data_from">
-								{questionData.from}
+								{this.props.eventList.range.currentData[0]}
 							</span>
 							до
 							<span className="range_data_to">
-								{questionData.to}
+								{this.props.eventList.range.currentData[1]}
 							</span>
 							<span className="range_data_mu">
 								{questionData.measUnit}
@@ -47,9 +47,11 @@ class Questions extends Component {
 							>
 								<input
 									id={`question_${index+1}`}
+									className="question_input"
 									type={questionData.type}
 									name={question.text}
 									value={question.text}
+									defaultChecked={answers[index]}
 								/>
 								<label htmlFor={`question_${index+1}`} >
 									{question.text}
