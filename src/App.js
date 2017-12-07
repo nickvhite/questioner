@@ -446,6 +446,7 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.formSubmit('question_2');
 								setTimeout(function(){
 									this.showQuestion('question_1');
 									setTimeout(function(){
@@ -483,6 +484,7 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.formSubmit('question_3');
 								setTimeout(function(){
 									this.showQuestion('question_2');
 									setTimeout(function(){
@@ -523,6 +525,7 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.formSubmit('question_4');
 								setTimeout(function(){
 									this.showQuestion('question_3');
 									setTimeout(function(){
@@ -558,6 +561,7 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.rangeSubmit('question_5');
 								setTimeout(function(){
 									this.showQuestion('question_4');
 									setTimeout(function(){
@@ -595,6 +599,7 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.rangeSubmit('question_6');
 								setTimeout(function(){
 									window.rangeElement.destroy();
 									window.rangeElement = undefined;
