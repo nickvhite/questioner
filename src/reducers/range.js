@@ -8,7 +8,7 @@ const initialState = {
 		}
 	},
 	range_2: {
-		start: [1.6, 25.1],
+		start: [3.3, 25.1],
 		step: 0.1,
 		range: {
 			'min': 0,

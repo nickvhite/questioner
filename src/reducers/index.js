@@ -10,6 +10,10 @@ import questions from './questions';
 import tablet from './tablet';
 import range from './range';
 import answers from './answers';
+import questionEnd from './questionEnd';
+import phone from './phone';
+import mail from './mail';
+import lastStep from './lastStep';
 
 export default combineReducers({
 	flags,
@@ -21,5 +25,9 @@ export default combineReducers({
 	questions,
 	tablet,
 	range,
-	answers
+	answers,
+	questionEnd,
+	phone,
+	mail,
+	lastStep
 })

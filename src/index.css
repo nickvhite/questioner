@@ -133,12 +133,14 @@
   color: #465dba;
   font-size: 60px;
   padding-top: 20px;
+  transition: opacity 0.3s ease-out;
 }
 .buttons {
   width: 100%;
   height: 50px;
   position: relative;
   margin-top: 50px;
+  transition: opacity 0.3s ease-out;
 }
 .buttons .disabled {
   opacity: 0.6;
@@ -150,6 +152,11 @@
 .buttons .ok_button {
   background: #efc031;
   margin-left: 100px;
+}
+.buttons .question_end_continue {
+  margin-left: 490px;
+  width: 200px;
+  background: #efc031;
 }
 .buttons .start_questions {
   margin-left: 500px;
@@ -205,6 +212,16 @@
   margin-top: -100px;
   background: url(images/golden_color.jpg) no-repeat center;
   background-size: 90% 90%;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+}
+.tablet img {
+  transition: opacity 0.3s ease-out;
+  position: absolute;
+  width: 90%;
+  height: 82%;
+  top: 9%;
+  left: 5%;
 }
 .tablet .ipad {
   position: absolute;
@@ -213,13 +230,118 @@
   top: 0;
   left: 0;
 }
-.tablet .tablet_image {
-  transition: opacity 0.2s ease-out;
-  position: absolute;
-  width: 90%;
-  height: 82%;
-  top: 9%;
-  left: 5%;
+.tablet .question_image {
+  opacity: 0;
+}
+.tablet .congratulation_image {
+  opacity: 1;
+}
+.tablet .question_map {
+  opacity: 1;
+}
+.tablet .point {
+  width: 15px;
+  height: 25px;
+}
+.tablet .p_0 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_1 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_2 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_3 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_4 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_5 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_6 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_7 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_8 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_9 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_10 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_11 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_12 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_13 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_14 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_15 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_16 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_17 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_18 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_19 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_20 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_21 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_22 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_23 {
+  margin-top: 92px;
+  margin-left: 12px;
+}
+.tablet .p_24 {
+  margin-top: 92px;
+  margin-left: 12px;
 }
 .questions_button .next_button {
   position: absolute;
@@ -235,6 +357,8 @@
   width: 350px;
   margin-left: 425px;
   height: 320px;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
 }
 .congratulations h1 {
   color: #465dba;
@@ -296,6 +420,8 @@
   padding-top: 20px;
   color: #404040;
   font-weight: 600;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
 }
 .question .question_title {
   color: #465dba;
@@ -350,4 +476,43 @@
 }
 .question form div input {
   cursor: pointer;
+}
+.question_end {
+  width: 350px;
+  margin-left: 425px;
+  height: 300px;
+  padding-top: 20px;
+  color: #404040;
+  font-weight: 600;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+}
+.question_end .question_end_title {
+  color: #465dba;
+  font-size: 22px;
+  font-weight: 100;
+}
+.question_end .question_end_text {
+  margin-top: 150px;
+  font-size: 16px;
+}
+.phone {
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+}
+.phone .phone_title {
+  color: #465dba;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 22px;
+}
+.phone .phone_loader {
+  height: 100px;
+}
+.phone .phone_label {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #404040;
 }
