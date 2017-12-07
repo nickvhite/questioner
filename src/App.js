@@ -269,22 +269,26 @@ class App extends Component {
 			},
 			questionEndOptions: {
 				title: 'Спасибо за участие в опросе!',
-				text: 'Нажмите кнопку <<Продолжить>>, что бы узнать результат.'
+				text: 'Нажмите кнопку <<Продолжить>>, что бы узнать результат.',
+				questionNum: 'question_end',
 			},
 			phoneOptions: {
 				title: 'Система приступила к подбору вариантов.',
-				text: 'Введите номер телефона, по которому Вам сообщат результат'
+				text: 'Введите номер телефона, по которому Вам сообщат результат',
+				inputFunction: function(e) {
+					this.mask('zipCode', '+7(000)000-00-00', e);
+				}.bind(this)
 			},
 			mailOptions: {
-				title: 'СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИИ 20 МИНУТ',
-				ahtung: 'ВНИМАНИЕ',
+				title: 'СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИИ 20 МИНУТ!',
+				ahtung: 'ВНИМАНИЕ!',
 				text_1: 'ТАКЖЕ ВАМ ОТКРЫЛСЯ ДОСТУП К ИНСТРУКЦИИ',
 				text_2: '<<12 правил безопасной покупки недвижимости в новостройках Краснодара>>',
 				text_3: 'КУДА ОТПРАВИТЬ ИНСТРУКЦИЮ?'
 			},
 			lastStep: {
 				title: 'ОСТАЛСЯ ВСЕГО ОДИН ШАГ',
-				text_1: 'ПЕРЕЙДИТЕ НА ПОЧТУ И ПОДТВЕРДИТЕ СВОЙ E-MAIL,' +
+				text_1: 'ПЕРЕЙДИТЕ НА ПОЧТУ И ПОДТВЕРДИТЕ СВОЙ E-MAIL, ' +
 					'ЧТОБЫ ВАША ИНСТРУКЦИЯ ПРИШЛА ТОЧНО ПО АДРЕСУ',
 				text_2: 'Что нужно сделать прямо сейчас?',
 				li_1: 'Перейдите в свой почтовый аккаунт. Ниже расположены кнопки почтовых сервисов.',
@@ -440,7 +444,15 @@ class App extends Component {
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								this.showQuestion('question_1');
+								document.querySelector('.question').style.opacity = 0;
+								document.querySelector('.buttons').style.opacity = 0;
+								setTimeout(function(){
+									this.showQuestion('question_1');
+									setTimeout(function(){
+										document.querySelector('.question').style.opacity = 1;
+										document.querySelector('.buttons').style.opacity = 1;
+									})
+								}.bind(this), 300)
 							}.bind(this)
 						}
 					],
@@ -469,7 +481,15 @@ class App extends Component {
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								this.showQuestion('question_2');
+								document.querySelector('.question').style.opacity = 0;
+								document.querySelector('.buttons').style.opacity = 0;
+								setTimeout(function(){
+									this.showQuestion('question_2');
+									setTimeout(function(){
+										document.querySelector('.question').style.opacity = 1;
+										document.querySelector('.buttons').style.opacity = 1;
+									})
+								}.bind(this), 300)
 							}.bind(this)
 						}
 					],
@@ -501,7 +521,15 @@ class App extends Component {
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								this.showQuestion('question_3');
+								document.querySelector('.question').style.opacity = 0;
+								document.querySelector('.buttons').style.opacity = 0;
+								setTimeout(function(){
+									this.showQuestion('question_3');
+									setTimeout(function(){
+										document.querySelector('.question').style.opacity = 1;
+										document.querySelector('.buttons').style.opacity = 1;
+									})
+								}.bind(this), 300)
 							}.bind(this)
 						}
 					],
@@ -528,7 +556,15 @@ class App extends Component {
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								this.showQuestion('question_4');
+								document.querySelector('.question').style.opacity = 0;
+								document.querySelector('.buttons').style.opacity = 0;
+								setTimeout(function(){
+									this.showQuestion('question_4');
+									setTimeout(function(){
+										document.querySelector('.question').style.opacity = 1;
+										document.querySelector('.buttons').style.opacity = 1;
+									})
+								}.bind(this), 300)
 							}.bind(this)
 						}
 					],
@@ -557,10 +593,17 @@ class App extends Component {
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								// window.rangeElement.updateOptions(this.props.eventList.range.range_1);
-								window.rangeElement.destroy();
-								window.rangeElement = undefined;
-								this.showQuestion('question_5');
+								document.querySelector('.question').style.opacity = 0;
+								document.querySelector('.buttons').style.opacity = 0;
+								setTimeout(function(){
+									window.rangeElement.destroy();
+									window.rangeElement = undefined;
+									this.showQuestion('question_5');
+									setTimeout(function(){
+										document.querySelector('.question').style.opacity = 1;
+										document.querySelector('.buttons').style.opacity = 1;
+									})
+								}.bind(this), 300)
 							}.bind(this)
 						}
 					]
@@ -587,22 +630,40 @@ class App extends Component {
 				phone: [{
 					parentClassName: 'phone_end_button',
 					text: 'Получить подборку',
-					className: 'phone_button',
-					clickFunction: function() {
-						this.props.onCreatePhone(false);
-						this.props.onCreateMail(true);
-						this.props.onShowMail(this.state.mailOptions);
-						this.props.onShowButtons(this.state.buttonsOptions.mail);
+					className: 'phone_button disabled',
+					clickFunction: function(e) {
+						if(!e.target.classList.contains('disabled')) {
+							document.querySelector('.phone').style.opacity = 0;
+							document.querySelector('.buttons').style.opacity = 0;
+							setTimeout(function(){
+								this.props.onCreatePhone(false);
+								this.props.onCreateMail(true);
+								this.props.onShowMail(this.state.mailOptions);
+								this.props.onShowButtons(this.state.buttonsOptions.mail);
+								setTimeout(function(){
+									document.querySelector('.mail').style.opacity = 1;
+									document.querySelector('.buttons').style.opacity = 1;
+								}, 50)
+							}.bind(this), 300)
+						}
 					}.bind(this)
 				}],
 				mail: [{
 					parentClassName: 'mail_end_button',
 					text: 'Получить',
+					className: 'mail_button',
 					clickFunction: function() {
-						this.props.onCreateMail(false);
-						this.props.onCreateButtons(false);
-						this.props.onCreateLastStep(true);
-						this.props.onShowLastStep(this.state.lastStep);
+						document.querySelector('.mail').style.opacity = 0;
+						document.querySelector('.buttons').style.opacity = 0;
+						setTimeout(function(){
+							this.props.onCreateMail(false);
+							this.props.onCreateButtons(false);
+							this.props.onCreateLastStep(true);
+							this.props.onShowLastStep(this.state.lastStep);
+							setTimeout(function(){
+								document.querySelector('.last_step').style.opacity = 1;
+							}, 50)
+						}.bind(this), 300)
 					}.bind(this)
 				}]
 			},
@@ -785,11 +846,51 @@ class App extends Component {
 		} else {
 			this.props.onShowTablet(this.state.tabletOptions[question]);
 		}
-		
 	}
+
+	mask(inputName, mask, evt) {
+	  try {
+	    var text = document.getElementById(inputName);
+	    var value = text.value;
+	    try {
+	      var e = (evt.which) ? evt.which : evt.keyCode;
+	      if ( e == 46 || e == 8 ) {
+	        text.value = "";
+	        return;
+	      }
+	    } catch (e1) {}
+	    var literalPattern=/[0\*]/;
+	    var numberPattern=/[0-9]/;
+	    var newValue = "";
+	    for (var vId = 0, mId = 0 ; mId < mask.length ; ) {
+	      if (mId >= value.length)
+	        break;
+	      if (mask[mId] == '0' && value[vId].match(numberPattern) == null) {
+	        break;
+	      }
+	      while (mask[mId].match(literalPattern) == null) {
+	        if (value[vId] == mask[mId])
+	          break;
+	      newValue += mask[mId++];
+	    }
+	    newValue += value[vId++];
+	    mId++;
+	  }
+	    text.value = newValue;
+	    if(text.value.length === 16) {
+	    	document.querySelector('.phone_button').className = 'button phone_button'
+	    } else {
+	    	document.querySelector('.phone_button').className = 'button phone_button disabled'
+	    }
+	  } catch(e) {}
+	}
+
 	
 	render() {
 		let componentArray = [];
+		let logo = <div id="logo" key="logo">
+			<img src="images/logo.png" />
+		</div>
 		let politickLink = <p
 			key="politickLink"
 			onClick={ function() {
@@ -801,6 +902,7 @@ class App extends Component {
 		>
 			Политика конфиденциальности
 		</p>
+		componentArray.push(logo);
 		if (this.props.eventList.flags.greeting) {
 			componentArray.push(<Greeting key="greeting"/>);
 		}

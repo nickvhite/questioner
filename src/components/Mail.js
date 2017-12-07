@@ -11,8 +11,7 @@ class Mail extends Component {
 				<p className="mail_text_1">{mailData.text_1}</p>
 				<p className="mail_text_2">{mailData.text_2}</p>
 				<p className="mail_text_3">{mailData.text_3}</p>
-				<label htmlFor="mail_input">{mailData.text}</label>
-				<input type="email" id="mail_input"/>
+				<input type="email" id="mail_input" placeholder="Введите Ваш E-MAIL"/>
 			</div>
 		)
 	}

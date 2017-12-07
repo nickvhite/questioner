@@ -28,8 +28,22 @@ class Tablet extends Component {
 				</div>
 			)
 		} else if (tabletData.className === 'questions_range') {
+			let questions = this.props.eventList.questions;
+			let questionEnd = this.props.eventList.questionEnd;
+			function getFilter() {
+				if(questionEnd.questionNum) {
+					return 'filter_3'
+				} else {
+					if(questions.questionNum === 'range_1') {
+						return 'filter_1'
+					} else {
+						return 'filter_2'
+					}
+				}
+			}
+			let filterClass = getFilter();
 			return (
-				<div className='tablet questions_range_tablet'>
+				<div className={`tablet questions_range_tablet ${filterClass}`}>
 					<img src={`../images/${tabletData.image_map}`} className="questions_range_map"/>
 					{tabletData.points_array.map((num, index) =>
 						<img
