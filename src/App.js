@@ -23,7 +23,7 @@ class App extends Component {
 			cancelOptions: {
 				text: [
 					'Вы уверены, что попали на этот сайт ',
-					'по ошибке, и что долшая зима',
+					'по ошибке, и что долгая зима',
 					'лучше жаркого лета?',
 					'Тогда просто закройте эту страницу!',
 					`Или нажмите кнопку ${String.fromCharCode(171)}Продолжить${String.fromCharCode(187)}`
@@ -106,9 +106,9 @@ class App extends Component {
 				text_2: 'Вы находитесь в интерактивной системе ' +
 					'содействия переездам граждан.',
 				title_2: 'Ваши действия сейчас:',
-				text_3: `Пройдите 6 простых шагов всего за 2 минуты`,
-				text_4: `Получите 5 объектов напрямую от надежных застройщиков`,
-				text_5: 'Нажмите <<Начать>>, что бы запустить процесс подбора.',
+				text_3: `Пройдите 6 простых шагов всего за 2 минуты.`,
+				text_4: `Получите 5 объектов напрямую от надежных застройщиков.`,
+				text_5: `Нажмите ${String.fromCharCode(171)}Начать${String.fromCharCode(187)}, чтобы запустить процесс подбора.`,
 				text_6: `${String.fromCharCode(10003)}`
 			},
 			questionsOptions: {
@@ -269,7 +269,7 @@ class App extends Component {
 			},
 			questionEndOptions: {
 				title: 'Спасибо за участие в опросе!',
-				text: 'Нажмите кнопку <<Продолжить>>, что бы узнать результат.',
+				text: `Нажмите кнопку ${String.fromCharCode(171)}Продолжить${String.fromCharCode(187)}, чтобы узнать результат.`,
 				questionNum: 'question_end',
 			},
 			phoneOptions: {
@@ -283,8 +283,9 @@ class App extends Component {
 				title: 'СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИИ 20 МИНУТ!',
 				ahtung: 'ВНИМАНИЕ!',
 				text_1: 'ТАКЖЕ ВАМ ОТКРЫЛСЯ ДОСТУП К ИНСТРУКЦИИ',
-				text_2: '<<12 правил безопасной покупки недвижимости в новостройках Краснодара>>',
-				text_3: 'КУДА ОТПРАВИТЬ ИНСТРУКЦИЮ?'
+				text_2: `${String.fromCharCode(171)}12 правил безопасной покупки недвижимости в новостройках Краснодара${String.fromCharCode(187)}`,
+				text_3: 'БЕСПЛАТНЫЕ ПЛЮШКИ ОТ РИЭЛТОРА',
+				text_4: 'КУДА ОТПРАВИТЬ ИНСТРУКЦИЮ?'
 			},
 			lastStep: {
 				title: 'ОСТАЛСЯ ВСЕГО ОДИН ШАГ',
@@ -640,6 +641,7 @@ class App extends Component {
 						if(!e.target.classList.contains('disabled')) {
 							document.querySelector('.phone').style.opacity = 0;
 							document.querySelector('.buttons').style.opacity = 0;
+							this.userDataSubmit('question_7');
 							setTimeout(function(){
 								this.props.onCreatePhone(false);
 								this.props.onCreateMail(true);
@@ -660,6 +662,8 @@ class App extends Component {
 					clickFunction: function() {
 						document.querySelector('.mail').style.opacity = 0;
 						document.querySelector('.buttons').style.opacity = 0;
+						this.userDataSubmit('question_8');
+						this.postData();
 						setTimeout(function(){
 							this.props.onCreateMail(false);
 							this.props.onCreateButtons(false);
@@ -819,12 +823,16 @@ class App extends Component {
 	
 	formSubmit(questionNum) {
 		let form = document.forms[0];
-		let answers = [];
+		let answers = {
+			checks: [],
+			values: []
+		};
 		for(let i = 0; i < this.state.questionsOptions[questionNum].variants.length; i++) {
 			if(form[i].checked) {
-				answers.push('checked')
+				answers.checks.push('checked');
+				answers.values.push(form[i].value);
 			} else {
-				answers.push('')
+				answers.checks.push('')
 			}
 		}
 		let result = {
@@ -840,7 +848,16 @@ class App extends Component {
 			name: questionNum,
 			answers: answers
 		};
-		this.props.onUpdateAnswers(result);
+		this.props.onUpdateRanges(result);
+	}
+	
+	userDataSubmit(dataName) {
+		let userData = document.getElementsByTagName('input')[0].value;
+		let result = {
+			name: dataName,
+			answers: userData
+		};
+		this.props.onUpdateUserData(result);
 	}
 	
 	showQuestion(question) {
@@ -890,6 +907,38 @@ class App extends Component {
 	  } catch(e) {}
 	}
 
+	postData() {
+		let data = this.props.eventList.answers;
+		let result = [{
+			rooms_kount: data.question_1.values,
+			dead_line: data.question_2.values,
+			city_district: data.question_3.values,
+			beside_home: data.question_4.values,
+			area: {
+				from: data.question_5[0],
+				to: data.question_5[1]
+			},
+			price: {
+				from: data.question_6[0],
+				to: data.question_6[1]
+			},
+			phone: data.question_7,
+			eMail: data.question_8
+		}];
+		
+		let res = JSON.stringify(result);
+		
+		let x = new XMLHttpRequest();
+		x.open("POST", "./mail.php", true);
+		x.onload = function () {
+			if (!x.responseText) {
+				return;
+			} else {
+				console.log(x.responseText)
+			}
+		};
+		x.send(res);
+	}
 	
 	render() {
 		let componentArray = [];
@@ -1028,6 +1077,11 @@ export default connect(
 		onUpdateAnswers: (answersData) => {
 			dispatch({type: 'UPDATE_ANSWERS', payload: answersData});
 		},
-		
+		onUpdateRanges: (answersData) => {
+			dispatch({type: 'UPDATE_RANGES', payload: answersData});
+		},
+		onUpdateUserData: (answersData) => {
+			dispatch({type: 'UPDATE_USER_DATA', payload: answersData});
+		}
 	})
 )(App);

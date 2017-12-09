@@ -6,7 +6,6 @@ import '../nouislider';
 class Questions extends Component {
 	render() {
 		let questionData = this.props.eventList.questions;
-		let answers = this.props.eventList.answers[questionData.questionNum];
 		if (questionData.type === 'range'){
 			return (
 				<div className="question">
@@ -33,6 +32,7 @@ class Questions extends Component {
 				</div>
 			)
 		} else {
+			let answers = this.props.eventList.answers[questionData.questionNum].checks;
 			return (
 				<div className="question">
 					<p className="question_title">{questionData.title}</p>

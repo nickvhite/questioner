@@ -1,6 +1,6 @@
 const initialState = {
 	range_1: {
-		start: [30, 270],
+		start: [0, 270],
 		step: 1,
 		range: {
 			'min': 0,
@@ -8,14 +8,14 @@ const initialState = {
 		}
 	},
 	range_2: {
-		start: [3.3, 25.1],
+		start: [0, 25.1],
 		step: 0.1,
 		range: {
 			'min': 0,
 			'max': 30
 		}
 	},
-	currentData: [30, 270]
+	currentData: [0, 270]
 };
 
 export default function range(state = initialState, action) {

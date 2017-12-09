@@ -6,19 +6,18 @@
 }
 
 #logo {
-  width: 270px;
-  height: 130px;
-  background: white;
+  width: 20%;
+  height: 13%;
   position: absolute;
-  z-index: 1;
+  background: white;
   top: 0;
-  left: 50%;
-  margin-left: 130px;
+  left: 70%;
+  z-index: 1;
   border-radius: 0 0 15px 15px;
   box-shadow: 2px 2px 10px 0px #717171, -2px 2px 10px #717171;
 
   img{
-    width: 240px;
+    width: 83%;
     margin: 5px 15px;
   }
 }
@@ -37,44 +36,46 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  &::before {
-    content: ' ';
-    background: url(./images/osen.jpg) no-repeat center top fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    transition: opacity 0.3s ease-out;
-    opacity: 0;
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-  &::after {
-    content: ' ';
-    background: url(./images/sky-light.jpg) no-repeat center top fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    transition: opacity 0.3s ease-out;
-    opacity: 0;
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
+}
+
+#root:before {
+  content: ' ';
+  background: url(./images/osen.jpg) no-repeat center top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#root:after {
+  content: ' ';
+  background: url(./images/sky-light.jpg) no-repeat center top fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .container {
-  width: 800px;
-  height: 450px;
-  margin: 160px auto 0;
+  width: 80%;
+  height: 70%;
+  margin: 15% auto 0;
   background: rgba(255, 255, 255, 0.7);
 }
 
@@ -91,27 +92,28 @@
 
   .crossBtn {
     background: no-repeat;
+    -webkit-box-shadow: none;
     box-shadow: none;
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 20px;
-    height: 20px;
+    top: 2%;
+    right: 1%;
+    width: 4%;
+    height: 6%;
     color: #404040;
     p{
-      font-size: 20px;
-      line-height: 20px;
+      font-size: 2.5vw;
+      line-height: 100%;
       font-weight: 100;
     }
   }
 
   .continueBtn {
-    font-size: 20px;
+    font-size: 2.5vw;
     background: #efc031;
-    height: 40px;
+    height: 20%;
     position: relative;
     display: block;
-    margin: 25px auto 0;
+    margin: 5% auto 0;
   }
 }
 
@@ -142,17 +144,15 @@
 
 .cancel {
   .cancel_container {
+    height: 35%;
+    width: 50%;
     position: absolute;
-    left: 50%;
-    width: 440px;
-    height: 240px;
-    margin-top: 190px;
-    margin-left: -250px;
     background: white;
-    padding: 30px;
+    padding: 5%;
+    margin: 18% 20%;
 
     .cancel_text {
-      font-size: 20px;
+      font-size: 2.5vw;
       span{
         display: block;
         margin-top: 3px;
@@ -165,18 +165,16 @@
 }
 
 .greeting {
-  height: 300px;
+  height: 80%;
   color: #465dba;
-  font-size: 60px;
-  padding-top: 20px;
+  font-size: 6vw;
   transition: opacity 0.3s ease-out;
 }
 
 .buttons {
   width: 100%;
-  height: 50px;
+  height: 20%;
   position: relative;
-  margin-top: 50px;
   transition: opacity 0.3s ease-out;
 
   .disabled {
@@ -224,7 +222,7 @@
   .mail_button {
     background: #efc031;
     display: block;
-    margin: 10px auto 0;
+    margin: -30px auto 0;
     height: 50px;
     width: 200px;
   }
@@ -663,7 +661,7 @@
     display: block;
   }
 
-  .phone_label {
+  .zipCode {
     display: block;
     text-align: center;
     font-weight: 600;
@@ -686,27 +684,33 @@
   .mail_ahtung {
     text-align: center;
     color: #465dba;
-    font-size: 20px;
-    margin-top: 40px;
+    font-size: 30px;
+    margin-top: 25px;
   }
 
   .mail_text_1 {
     text-align: center;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .mail_text_2 {
     text-align: center;
     font-size: 20px;
     width: 65%;
-    margin: 20px auto 0;
+    margin: 15px auto 0;
   }
 
   .mail_text_3 {
     text-align: center;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
+  }
+
+  .mail_text_4 {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
   }
 
   #mail_input {
@@ -715,8 +719,14 @@
     padding: 11px;
     font-size: 25px;
     color: #404040;
-    margin: 25px auto;
+    margin: 20px auto;
     display: block;
+  }
+
+  .book_image {
+    position: absolute;
+    width: 115px;
+    margin-left: 25px;
   }
 }
 

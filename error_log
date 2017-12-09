@@ -1,0 +1,2 @@
+donskoy-realty.ru [Sat Dec 09 17:16:34 2017] [error] [pid 43106] sapi_apache2.c(326): [client 93.77.95.130:59714] PHP Parse error:  syntax error, unexpected '[' in /home/t/tais2311/public_html/mail.php on line 5
+donskoy-realty.ru [Sat Dec 09 17:18:07 2017] [error] [pid 5718] sapi_apache2.c(326): [client 93.77.95.130:38584] PHP Parse error:  syntax error, unexpected '[' in /home/t/tais2311/public_html/mail.php on line 5
