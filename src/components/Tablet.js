@@ -11,12 +11,14 @@ class Tablet extends Component {
 						src={`../images/${tabletData.src}`}
 						className="congratulations_image"
 					/>
+					<img src="../images/golden_color.jpg" className="golden"/>
 					<img src="../images/ipad.png" className="ipad"/>
 				</div>
 			)
 		} else if (tabletData.className === 'questions'){
+			let lastChange = this.props.eventList.lastChange[tabletData.questionNum];
 			return (
-				<div className='tablet questions_tablet'>
+				<div className={`tablet questions_tablet`}>
 					{tabletData.images.map((img, index) =>
 						<img
 							src={`../images/${img.src}`}
@@ -24,6 +26,7 @@ class Tablet extends Component {
 							key={`question_${index+1}_image`}
 						/>
 					)}
+					<img src="../images/golden_color.jpg" className="golden"/>
 					<img src="../images/ipad.png" className="ipad"/>
 				</div>
 			)
@@ -52,6 +55,7 @@ class Tablet extends Component {
 							className={`p_${index} point_${num} point`}
 						/>
 					)}
+					<img src="../images/golden_color.jpg" className="golden"/>
 					<img src="../images/ipad.png" className="ipad"/>
 				</div>
 			)

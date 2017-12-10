@@ -18,7 +18,9 @@ class App extends Component {
 		super(props);
 		this.state = {
 			greetingOptions: {
-				text: 'Хотите&купить недвижимость&в Краснодаре?'
+				text_1: 'Хочу',
+				text_2: 'купить недвижимость',
+				text_3: 'в Краснодаре'
 			},
 			cancelOptions: {
 				text: [
@@ -83,20 +85,16 @@ class App extends Component {
 				buttons: {
 					continueBtn: {
 						text: 'Продолжить',
-						className: 'button continueBtn',
-						onclickFunction: function() {
-							this.props.onShowPolitick('');
-							this.props.onCreatePolitick(false);
-						}.bind(this)
+						className: 'button continueBtn'
 					},
 					crossBtn: {
-						text: 'Х',
-						className: 'button crossBtn',
-						onclickFunction: function() {
-							this.props.onShowPolitick('');
-							this.props.onCreatePolitick(false);
-						}.bind(this)
-					}
+						text: String.fromCharCode(10060),
+						className: 'button crossBtn'
+					},
+					onclickFunction: function() {
+						this.props.onShowPolitick('');
+						this.props.onCreatePolitick(false);
+					}.bind(this)
 				}
 			},
 			congratulationsOption: {
@@ -283,9 +281,8 @@ class App extends Component {
 				title: 'СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИИ 20 МИНУТ!',
 				ahtung: 'ВНИМАНИЕ!',
 				text_1: 'ТАКЖЕ ВАМ ОТКРЫЛСЯ ДОСТУП К ИНСТРУКЦИИ',
-				text_2: `${String.fromCharCode(171)}12 правил безопасной покупки недвижимости в новостройках Краснодара${String.fromCharCode(187)}`,
-				text_3: 'БЕСПЛАТНЫЕ ПЛЮШКИ ОТ РИЭЛТОРА',
-				text_4: 'КУДА ОТПРАВИТЬ ИНСТРУКЦИЮ?'
+				text_2: `${String.fromCharCode(171)}12 правил безопасной покупки недвижимости в новостройках Краснодара${String.fromCharCode(187)} БЕСПЛАТНЫЕ ПЛЮШКИ ОТ РИЭЛТОРА`,
+				text_3: 'КУДА ОТПРАВИТЬ ИНСТРУКЦИЮ?'
 			},
 			lastStep: {
 				title: 'ОСТАЛСЯ ВСЕГО ОДИН ШАГ',
@@ -328,6 +325,7 @@ class App extends Component {
 							for (let i = 0; i < selectors.length; i++) {
 								if (selectors[i].selectorText === '#root::before') {
 									selectors[i].style.opacity = 1;
+									break;
 								}
 							}
 						},
@@ -338,6 +336,7 @@ class App extends Component {
 								for (let i = 0; i < selectors.length; i++) {
 									if (selectors[i].selectorText === '#root::before') {
 										selectors[i].style.opacity = 0;
+										break;
 									}
 								}
 							}
@@ -368,6 +367,7 @@ class App extends Component {
 							for (var i = 0; i < selectors.length; i++) {
 								if (selectors[i].selectorText === '#root::after') {
 									selectors[i].style.opacity = 1;
+									break;
 								}
 							}
 						},
@@ -376,6 +376,7 @@ class App extends Component {
 							for (let i = 0; i < selectors.length; i++) {
 								if (selectors[i].selectorText === '#root::after') {
 									selectors[i].style.opacity = 0;
+									break;
 								}
 							}
 						}
@@ -682,6 +683,7 @@ class App extends Component {
 					src: 'stulya.jpg'
 				},
 				question_1: {
+					questionNum: 1,
 					className: 'questions',
 					images: [
 						{
@@ -698,6 +700,7 @@ class App extends Component {
 					]
 				},
 				question_2: {
+					questionNum: 2,
 					className: 'questions',
 					images: [
 						{
@@ -712,6 +715,7 @@ class App extends Component {
 					]
 				},
 				question_3: {
+					questionNum: 3,
 					className: 'questions',
 					images: [
 						{
@@ -726,6 +730,7 @@ class App extends Component {
 					]
 				},
 				question_4: {
+					questionNum: 4,
 					className: 'questions',
 					images: [
 						{
@@ -751,13 +756,14 @@ class App extends Component {
 				}
 			}
 		};
-		this.showGreetingText = this.showGreetingText.bind(this);
 		this.showQuestion = this.showQuestion.bind(this);
 	}
 	
 	componentDidMount() {
 		window.addEventListener('load', function(){
-			this.showGreetingText();
+			this.props.onShowGreeting(this.state.greetingOptions);
+			this.props.onCreateButtons(true);
+			this.props.onShowButtons(this.state.buttonsOptions.greeting);
 		}.bind(this));
 	}
 
@@ -784,31 +790,13 @@ class App extends Component {
 		}
 	}
 	
-	showGreetingText() {
-		let literNum = 0;
-		let text = ['', '', ''];
-		let textNum = 0;
-		this.props.onCreateGreeting(true);
-		let interval = setInterval(function () {
-			if (literNum >= this.state.greetingOptions.text.length) {
-				this.props.onCreateButtons(true);
-				this.props.onShowButtons(this.state.buttonsOptions.greeting);
-				clearInterval(interval)
-			} else {
-				if (this.state.greetingOptions.text[literNum] === '&') {
-					textNum += 1;
-					literNum += 1;
-				} else {
-					text[textNum] += this.state.greetingOptions.text[literNum];
-					this.props.onShowGreeting(text);
-					literNum += 1;
-				}
-			}
-		}.bind(this), 50)
-	}
-	
 	formChange(e, questionNum) {
 		let questionForm = e.target.form;
+		let changeData = {
+			name: questionNum,
+			data: e.target.id
+		}
+		this.props.onUpdateLastChange(changeData);
 		for(let i = 0; i < this.state.questionsOptions[questionNum].variants.length; i++) {
 			if(questionForm[i].checked) {
 				this.state.buttonsOptions.questions[questionNum][0].className = 'next_button';
@@ -942,9 +930,7 @@ class App extends Component {
 	
 	render() {
 		let componentArray = [];
-		let logo = <div id="logo" key="logo">
-			<img src="images/logo.png" />
-		</div>
+		let logo = <div id="logo" key="logo"></div>
 		let politickLink = <p
 			key="politickLink"
 			onClick={ function() {
@@ -1038,7 +1024,6 @@ export default connect(
 			dispatch({type: 'CREATE_LAST_STEP', payload: flag});
 		},
 		onShowGreeting: (text) => {
-			// dispatch({ type: 'SHOW_GREETING', payload: text });
 			dispatch({type: 'SHOW_GREETING', payload: text});
 		},
 		onShowButtons: (buttonsOption) => {
@@ -1082,6 +1067,9 @@ export default connect(
 		},
 		onUpdateUserData: (answersData) => {
 			dispatch({type: 'UPDATE_USER_DATA', payload: answersData});
+		},
+		onUpdateLastChange: (changeData) => {
+			dispatch({type: 'UPDATE_LAST_CHANGE', payload: changeData});
 		}
 	})
 )(App);

@@ -5,19 +5,24 @@
   user-select: none;
 }
 #logo {
-  width: 20%;
-  height: 13%;
+  width: 200px;
+  height: 85px;
+  background-color: white;
   position: absolute;
-  background: white;
-  top: 0;
-  left: 70%;
   z-index: 1;
+  top: 0;
+  left: 50%;
+  margin-left: 310px;
   border-radius: 0 0 15px 15px;
+  -webkit-box-shadow: 2px 2px 10px 0px #717171, -2px 2px 10px #717171;
   box-shadow: 2px 2px 10px 0px #717171, -2px 2px 10px #717171;
-}
-#logo img {
-  width: 83%;
-  margin: 5px 15px;
+  background-image: url(/static/media/logo.9e26e8a4.png);
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #root {
   margin-top: 0;
@@ -33,32 +38,30 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 #root:before {
-  content: ' ';
   background: url(images/osen.jpg) no-repeat center top fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  transition: opacity 0.3s ease-out;
   opacity: 0;
-  z-index: -1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
 }
 #root:after {
-  content: ' ';
   background: url(images/sky-light.jpg) no-repeat center top fixed;
+  opacity: 0;
+}
+#root:before,
+#root:after {
+  content: ' ';
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
-  opacity: 0;
   z-index: -1;
   position: absolute;
   width: 100%;
@@ -67,10 +70,10 @@
   left: 0;
 }
 .container {
-  width: 80%;
-  height: 70%;
-  margin: 15% auto 0;
-  background: rgba(255, 255, 255, 0.7);
+  width: 1020px;
+  height: 500px;
+  margin: 100px auto 0;
+  background: rgba(255, 255, 255, 0.5);
 }
 .modal {
   position: absolute;
@@ -85,38 +88,35 @@
 }
 .modal .crossBtn {
   background: no-repeat;
-  -webkit-box-shadow: none;
   box-shadow: none;
   position: absolute;
-  top: 2%;
-  right: 1%;
-  width: 4%;
-  height: 6%;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
   color: #404040;
 }
 .modal .crossBtn p {
-  font-size: 2.5vw;
-  line-height: 100%;
-  font-weight: 100;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 600;
 }
 .modal .continueBtn {
-  font-size: 2.5vw;
+  font-size: 20px;
   background: #efc031;
-  height: 20%;
+  height: 60px;
   position: relative;
   display: block;
-  margin: 5% auto 0;
+  margin: 5px auto 0;
 }
 .politick .politick_container {
-  position: absolute;
-  width: 750px;
+  position: relative;
+  width: 710px;
   height: 565px;
-  left: 50%;
-  top: 25px;
-  margin-left: -400px;
   background: white;
-  padding: 25px;
+  padding: 25px 45px;
   text-align: center;
+  margin: 25px auto 0;
 }
 .politick .politick_container .politick_text p {
   margin-top: 20px;
@@ -126,15 +126,19 @@
   font-weight: 600;
 }
 .cancel .cancel_container {
-  height: 35%;
-  width: 50%;
   position: absolute;
+  left: 50%;
+  width: 440px;
+  height: 240px;
+  margin-top: 190px;
+  margin-left: -250px;
   background: white;
-  padding: 5%;
-  margin: 18% 20%;
+  padding: 30px;
 }
 .cancel .cancel_container .cancel_text {
-  font-size: 2.5vw;
+  font-size: 20px;
+  height: 175px;
+  width: 440px;
 }
 .cancel .cancel_container .cancel_text span {
   display: block;
@@ -144,43 +148,56 @@
   margin-top: 25px;
 }
 .greeting {
-  height: 80%;
+  height: 380px;
   color: #465dba;
-  font-size: 6vw;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
 }
+.greeting p {
+  width: 1020px;
+  text-align: center;
+  font-size: 80px;
+  line-height: 120px;
+  margin: 0;
+}
+.greeting .big_text {
+  font-size: 110px;
+  line-height: 140px;
+}
 .buttons {
-  width: 100%;
-  height: 20%;
+  width: 1020px;
+  height: 120px;
   position: relative;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
 }
 .buttons .disabled {
   opacity: 0.6;
 }
 .buttons .cancel_button {
+  margin-top: 30px;
   background: #465dba;
-  margin-left: 200px;
+  margin-left: 285px;
 }
 .buttons .ok_button {
+  margin-top: 30px;
   background: #efc031;
-  margin-left: 100px;
+  margin-left: 150px;
 }
 .buttons .question_end_continue {
-  margin-left: 490px;
+  margin-left: 600px;
   width: 200px;
   background: #efc031;
 }
-.buttons .start_questions {
-  margin-left: 500px;
-  width: 200px;
-  height: 50px;
-  background: #efc031;
-}
+.buttons .start_questions,
 .buttons .next_button {
-  margin-left: 500px;
+  margin-left: 620px;
   width: 200px;
-  height: 50px;
+  height: 60px;
   background: #efc031;
 }
 .buttons .phone_button {
@@ -193,12 +210,22 @@
 .buttons .mail_button {
   background: #efc031;
   display: block;
-  margin: -30px auto 0;
+  margin: -20px auto 0;
   height: 50px;
   width: 200px;
 }
-.politickLink {
+.questions_button .next_button {
   position: absolute;
+  width: 125px;
+  margin-left: 750px;
+}
+.questions_button .previous_button {
+  width: 125px;
+  margin-left: 550px;
+  background-color: #92a2c6;
+}
+.politickLink {
+  position: relative;
   left: 0;
   width: 100%;
   text-align: center;
@@ -206,12 +233,12 @@
   cursor: pointer;
   color: white;
   font-size: 14px;
-  bottom: 20px;
+  margin-top: 20px;
 }
 .button {
   border: 0;
   width: 150px;
-  height: 50px;
+  height: 60px;
   color: white;
   font-size: 30px;
   vertical-align: top;
@@ -221,41 +248,45 @@
 .button:focus {
   outline: none;
 }
-.small_text {
-  width: 100%;
-  text-align: center;
-  line-height: 90px;
-}
-.big_text {
-  width: 100%;
-  font-size: 90px;
-  text-align: center;
-}
 .tablet {
-  position: absolute;
+  position: relative;
+  display: inline-block;
   width: 360px;
-  height: 520px;
-  margin-left: 30px;
-  margin-top: -100px;
-  background: url(images/golden_color.jpg) no-repeat center;
-  background-size: 90% 90%;
+  height: 380px;
+  margin-left: 50px;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
   opacity: 0;
 }
 .tablet img {
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
   position: absolute;
-  width: 90%;
-  height: 82%;
-  top: 9%;
-  left: 5%;
+  width: 330px;
+  height: 420px;
+  top: -10px;
+  left: 15px;
+  z-index: 2;
 }
 .tablet .ipad {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
+  width: 360px;
+  height: 520px;
+  top: -60px;
   left: 0;
+  z-index: 3;
+}
+.tablet .golden {
+  position: absolute;
+  width: 330px;
+  height: 420px;
+  top: -10px;
+  left: 15px;
+  z-index: 1;
 }
 .tablet .question_image {
   opacity: 0;
@@ -379,20 +410,17 @@
 .filter_2 .point_0 {
   opacity: 0;
 }
-.questions_button .next_button {
-  position: absolute;
-  width: 125px;
-  margin-left: 600px;
-}
-.questions_button .previous_button {
-  width: 125px;
-  margin-left: 425px;
-  background-color: #92a2c6;
-}
-.congratulations {
+.congratulations,
+.question,
+.question_end {
+  display: inline-block;
+  vertical-align: top;
   width: 350px;
-  margin-left: 425px;
-  height: 320px;
+  margin-left: 125px;
+  height: 380px;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
   opacity: 0;
 }
@@ -449,16 +477,6 @@
   width: 116%;
   margin-left: -7%;
 }
-.question {
-  width: 350px;
-  margin-left: 425px;
-  height: 300px;
-  padding-top: 20px;
-  color: #404040;
-  font-weight: 600;
-  transition: opacity 0.3s ease-out;
-  opacity: 0;
-}
 .question .question_title {
   color: #465dba;
   position: absolute;
@@ -513,16 +531,6 @@
 .question form div input {
   cursor: pointer;
 }
-.question_end {
-  width: 350px;
-  margin-left: 425px;
-  height: 300px;
-  padding-top: 20px;
-  color: #404040;
-  font-weight: 600;
-  transition: opacity 0.3s ease-out;
-  opacity: 0;
-}
 .question_end .question_end_title {
   color: #465dba;
   font-size: 22px;
@@ -533,6 +541,9 @@
   font-size: 16px;
 }
 .phone {
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
   opacity: 0;
 }
@@ -555,7 +566,7 @@
   margin: 25px auto;
   display: block;
 }
-.phone .zipCode {
+.phone .phone_label {
   display: block;
   text-align: center;
   font-weight: 600;
@@ -563,6 +574,9 @@
   color: #404040;
 }
 .mail {
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
   opacity: 0;
 }
@@ -575,29 +589,24 @@
 .mail .mail_ahtung {
   text-align: center;
   color: #465dba;
-  font-size: 30px;
-  margin-top: 25px;
+  font-size: 20px;
+  margin-top: 40px;
 }
 .mail .mail_text_1 {
   text-align: center;
   font-size: 20px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 .mail .mail_text_2 {
   text-align: center;
   font-size: 20px;
   width: 65%;
-  margin: 15px auto 0;
+  margin: 20px auto 0;
 }
 .mail .mail_text_3 {
   text-align: center;
   font-size: 20px;
-  margin-top: 15px;
-}
-.mail .mail_text_4 {
-  text-align: center;
-  font-size: 20px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 .mail #mail_input {
   background: none;
@@ -605,15 +614,18 @@
   padding: 11px;
   font-size: 25px;
   color: #404040;
-  margin: 20px auto;
+  margin: 25px auto;
   display: block;
 }
 .mail .book_image {
   position: absolute;
-  width: 115px;
-  margin-left: 25px;
+  width: 150px;
+  margin-left: 10px;
 }
 .last_step {
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
   opacity: 0;
 }

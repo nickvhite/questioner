@@ -7,6 +7,12 @@ class Cancel extends Component {
 		return (
 			<div className="modal cancel">
 				<div className="cancel_container">
+					<button
+						className={cancelData.buttons.crossBtn.className}
+						onClick={cancelData.buttons.onclickFunction}
+					>
+						<p>{cancelData.buttons.crossBtn.text}</p>
+					</button>
 					<p className="cancel_text">
 						{cancelData.text.map((text, index) =>
 							<span key={index}>{text}</span>
@@ -17,12 +23,6 @@ class Cancel extends Component {
 						onClick={cancelData.buttons.onclickFunction}
 					>
 						<p>{cancelData.buttons.continueBtn.text}</p>
-					</button>
-					<button
-						className={cancelData.buttons.crossBtn.className}
-						onClick={cancelData.buttons.onclickFunction}
-					>
-						<p>{cancelData.buttons.crossBtn.text}</p>
 					</button>
 				</div>
 			</div>

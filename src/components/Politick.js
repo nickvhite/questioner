@@ -8,6 +8,12 @@ class Politick extends Component {
 		return (
 			<div className="modal politick">
 				<div className="politick_container">
+					<button
+						className={politickData.buttons.crossBtn.className}
+						onClick={politickData.buttons.onclickFunction}
+					>
+						<p>{politickData.buttons.crossBtn.text}</p>
+					</button>
 					<div className="politick_text">
 						{politickData.text.map((text, index) =>
 							<p key={index}>{text}</p>
@@ -15,15 +21,9 @@ class Politick extends Component {
 					</div>
 					<button
 						className={politickData.buttons.continueBtn.className}
-						onClick={politickData.buttons.continueBtn.onclickFunction}
+						onClick={politickData.buttons.onclickFunction}
 					>
 						<p>{politickData.buttons.continueBtn.text}</p>
-					</button>
-					<button
-						className={politickData.buttons.crossBtn.className}
-						onClick={politickData.buttons.crossBtn.onclickFunction}
-					>
-						<p>{politickData.buttons.crossBtn.text}</p>
 					</button>
 				</div>
 			</div>

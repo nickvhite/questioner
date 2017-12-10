@@ -14,6 +14,7 @@ import questionEnd from './questionEnd';
 import phone from './phone';
 import mail from './mail';
 import lastStep from './lastStep';
+import lastChange from './lastChange';
 
 export default combineReducers({
 	flags,
@@ -29,5 +30,6 @@ export default combineReducers({
 	questionEnd,
 	phone,
 	mail,
-	lastStep
+	lastStep,
+	lastChange
 })

@@ -1,7 +1,7 @@
 const initialState = {
     preloading: true,
     buttons: false,
-    greeting: false,
+    greeting: true,
     cancel: false,
     politick: false,
     tablet: false,

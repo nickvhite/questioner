@@ -1,17 +1,21 @@
 const initialState = {
 	question_1: {
+		last_check: '',
 		checks: [],
 		values: []
 	},
 	question_2: {
+		last_check: '',
 		checks: [],
 		values: []
 	},
 	question_3: {
+		last_check: '',
 		checks: [],
 		values: []
 	},
 	question_4: {
+		last_check: '',
 		checks: [],
 		values: []
 	},
