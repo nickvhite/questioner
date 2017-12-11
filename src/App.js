@@ -42,12 +42,7 @@ class App extends Component {
 					onclickFunction: function() {
 						this.props.onShowCancel('');
 						this.props.onCreateCancel(false);
-						let selectors = document.styleSheets[0].cssRules;
-						for (var i = 0; i < selectors.length; i++) {
-							if (selectors[i].selectorText === '#root::before') {
-								selectors[i].style.opacity = 0;
-							}
-						}
+						document.getElementById('noBg').style.opacity = 0;
 					}.bind(this)
 				}
 			},
@@ -139,11 +134,11 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
 					},
 					unHoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
 					}
 				},
@@ -172,11 +167,11 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
 					},
 					unHoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
 					}
 				},
@@ -205,11 +200,11 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
 					},
 					unHoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
 					}
 				},
@@ -244,11 +239,11 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
 					},
 					unHoverFunction: function(e) {
-						let img = document.querySelector('.'+e.target.closest('div').classList[0]+'_image');
+						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
 					}
 				},
@@ -278,10 +273,10 @@ class App extends Component {
 				}.bind(this)
 			},
 			mailOptions: {
-				title: 'СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИИ 20 МИНУТ!',
+				title: 'СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИЕ 20 МИНУТ!',
 				ahtung: 'ВНИМАНИЕ!',
 				text_1: 'ТАКЖЕ ВАМ ОТКРЫЛСЯ ДОСТУП К ИНСТРУКЦИИ',
-				text_2: `${String.fromCharCode(171)}12 правил безопасной покупки недвижимости в новостройках Краснодара${String.fromCharCode(187)} БЕСПЛАТНЫЕ ПЛЮШКИ ОТ РИЭЛТОРА`,
+				text_2: `${String.fromCharCode(171)}12 правил безопасной покупки недвижимости в новостройках Краснодара. Бесплатные плюшки от риэлтора.${String.fromCharCode(187)}`,
 				text_3: 'КУДА ОТПРАВИТЬ ИНСТРУКЦИЮ?'
 			},
 			lastStep: {
@@ -321,24 +316,14 @@ class App extends Component {
 							this.props.onShowCancel(this.state.cancelOptions);
 						}.bind(this),
 						hoverFunction: function() {
-							let selectors = document.styleSheets[0].cssRules;
-							for (let i = 0; i < selectors.length; i++) {
-								if (selectors[i].selectorText === '#root::before') {
-									selectors[i].style.opacity = 1;
-									break;
-								}
-							}
+							let noBG = document.getElementById('noBg');
+							noBG.style.opacity = 1;
 						},
 						unHoverFunction: function() {
-							let selectors = document.styleSheets[0].cssRules;
 							let cancelBlock = document.querySelector('.cancel');
 							if (!cancelBlock) {
-								for (let i = 0; i < selectors.length; i++) {
-									if (selectors[i].selectorText === '#root::before') {
-										selectors[i].style.opacity = 0;
-										break;
-									}
-								}
+								let noBG = document.getElementById('noBg');
+								noBG.style.opacity = 0;
 							}
 						}
 					},
@@ -363,22 +348,12 @@ class App extends Component {
 							}.bind(this), 250)
 						}.bind(this),
 						hoverFunction: function(e) {
-							let selectors = document.styleSheets[0].cssRules;
-							for (var i = 0; i < selectors.length; i++) {
-								if (selectors[i].selectorText === '#root::after') {
-									selectors[i].style.opacity = 1;
-									break;
-								}
-							}
+							let noBG = document.getElementById('yesBg');
+							noBG.style.opacity = 1;
 						},
 						unHoverFunction: function (e) {
-							let selectors = document.styleSheets[0].cssRules;
-							for (let i = 0; i < selectors.length; i++) {
-								if (selectors[i].selectorText === '#root::after') {
-									selectors[i].style.opacity = 0;
-									break;
-								}
-							}
+							let noBG = document.getElementById('yesBg');
+							noBG.style.opacity = 0;
 						}
 					}
 				],
@@ -930,7 +905,9 @@ class App extends Component {
 	
 	render() {
 		let componentArray = [];
-		let logo = <div id="logo" key="logo"></div>
+		let noBg = <div id="noBg" key="noBg"> </div>;
+		let yesBg = <div id="yesBg" key="yesBg"> </div>;
+		let logo = <div id="logo" key="logo"> </div>;
 		let politickLink = <p
 			key="politickLink"
 			onClick={ function() {
@@ -942,6 +919,8 @@ class App extends Component {
 		>
 			Политика конфиденциальности
 		</p>
+		componentArray.push(noBg);
+		componentArray.push(yesBg);
 		componentArray.push(logo);
 		if (this.props.eventList.flags.greeting) {
 			componentArray.push(<Greeting key="greeting"/>);

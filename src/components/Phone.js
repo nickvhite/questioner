@@ -19,7 +19,7 @@ class Phone extends Component {
 						<div id="circularG_8" className="circularG"></div>
 					</div>
 				</div>
-				<label htmlFor="phone_input" key="label" className="zipCode">{phoneData.text}</label>
+				<p className="zipCode">{phoneData.text}</p>
 				<input type="text" id="zipCode" onInput={phoneData.inputFunction} defaultValue="+7(___)___-____" />
 			</div>
 		)

@@ -17,7 +17,7 @@
   border-radius: 0 0 15px 15px;
   -webkit-box-shadow: 2px 2px 10px 0px #717171, -2px 2px 10px #717171;
   box-shadow: 2px 2px 10px 0px #717171, -2px 2px 10px #717171;
-  background-image: url(/static/media/logo.9e26e8a4.png);
+  background-image: url(images/logo.png);
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -44,35 +44,35 @@
   -moz-transition: opacity 0.3s ease-out;
   -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
+  z-index: -2;
+}
 
-  &:before {
-    background: url(./images/osen.jpg) no-repeat center top fixed;
-    opacity: 0;
-  }
+#noBg {
+  background: url(./images/osen.jpg) no-repeat center top fixed;
+  opacity: 0;
+}
 
-  &:after {
-    background: url(./images/sky-light.jpg) no-repeat center top fixed;
-    opacity: 0;
-  }
+#yesBg {
+  background: url(./images/sky-light.jpg) no-repeat center top fixed;
+  opacity: 0;
+}
 
-  &:before,
-  &:after {
-    content: ' ';
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    -webkit-transition: opacity 0.3s ease-out;
-    -moz-transition: opacity 0.3s ease-out;
-    -o-transition: opacity 0.3s ease-out;
-    transition: opacity 0.3s ease-out;
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
+#noBg,
+#yesBg {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .container {
@@ -89,7 +89,7 @@
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  z-index: 4;
   text-align: center;
   color: #404040;
 
@@ -123,7 +123,7 @@
   .politick_container {
     position: relative;
     width: 710px;
-    height: 565px;
+    height: 595px;
     background: white;
     padding: 25px 45px;
     text-align: center;
@@ -204,7 +204,7 @@
   }
 
   .cancel_button {
-    margin-top: 30px;
+    margin-top: 40px;
     background: #465dba;
     margin-left: 285px;
   }
@@ -231,18 +231,18 @@
 
   .phone_button {
     background: #efc031;
-    display: block;
-    margin: 10px auto 0;
+    margin-top: 10px;
+    margin-left: 410px;
     height: 75px;
     width: 200px;
   }
 
   .mail_button {
     background: #efc031;
-    display: block;
-    margin: -20px auto 0;
     height: 50px;
     width: 200px;
+    margin-top: 30px;
+    margin-left: 410px;
   }
 }
 
@@ -250,12 +250,12 @@
   .next_button{
     position: absolute;
     width: 125px;
-    margin-left: 750px;
+    margin-left: 775px;
   }
 
   .previous_button {
     width: 125px;
-    margin-left: 550px;
+    margin-left: 560px;
     background-color: #92a2c6;
   }
 }
@@ -291,7 +291,7 @@
   display: inline-block;
   width: 360px;
   height: 380px;
-  margin-left: 50px;
+  margin-left: 80px;
   -webkit-transition: opacity 0.3s ease-out;
   -moz-transition: opacity 0.3s ease-out;
   -o-transition: opacity 0.3s ease-out;
@@ -495,8 +495,8 @@
 .question_end {
   display: inline-block;
   vertical-align: top;
-  width: 350px;
-  margin-left: 125px;
+  width: 400px;
+  margin-left: 90px;
   height: 380px;
   -webkit-transition: opacity 0.3s ease-out;
   -moz-transition: opacity 0.3s ease-out;
@@ -509,12 +509,12 @@
   h1 {
     color: #465dba;
     line-height: 75px;
-    font-size: 40px;
+    font-size: 47px;
   }
 
   p {
     color: #404040;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
   }
 
@@ -541,12 +541,12 @@
   h3 {
     color: #465dba;
     line-height: 70px;
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .text_3 {
     color: #465dba;
-    font-size: 20px;
+    font-size: 25px;
     display: inline-block;
     vertical-align: top;
   }
@@ -560,10 +560,8 @@
   }
 
   .text_6 {
-    font-size: 11px;
+    font-size: 12px;
     margin-top: 20px;
-    width: 116%;
-    margin-left: -7%;
   }
 }
 
@@ -573,15 +571,19 @@
     color: #465dba;
     position: absolute;
     width: 350px;
+    font-size: 17px;
+    margin-top: 15px;
   }
 
   .question_form_title {
-    margin: 80px 0 50px;
+    margin: 80px 0 0;
+    font-size: 18px;
   }
 
   .question_form {
     border: 1px solid #928787;
     padding: 20px;
+    margin-top: 50px;
 
     .question_min {
       position: relative;
@@ -597,7 +599,7 @@
       margin-top: 15px;
       font-size: 12px;
       font-weight: 100;
-      margin-left: 258px;
+      margin-left: 310px;
     }
 
     .range_data_container {
@@ -620,9 +622,15 @@
   }
 
   form {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     div{
-      margin: 10px 0;
-      cursor: pointer;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
 
       label{
         margin-left: 10px;
@@ -640,17 +648,21 @@
 
   .question_end_title {
     color: #465dba;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 100;
+    margin-top: 25px;
   }
 
   .question_end_text {
-    margin-top: 150px;
-    font-size: 16px;
+    margin-top: 140px;
+    font-size: 22px;
   }
 }
 
 .phone {
+  display: block;
+  width: 1020px;
+  height: 380px;
   -webkit-transition: opacity 0.3s ease-out;
   -moz-transition: opacity 0.3s ease-out;
   -o-transition: opacity 0.3s ease-out;
@@ -660,13 +672,19 @@
   .phone_title {
     color: #465dba;
     text-align: center;
-    margin-top: 20px;
-    font-size: 22px;
+    font-size: 24px;
+    line-height: 100px;
+
   }
 
   .phone_loader {
-    height: 130px;
+    height: 140px;
     margin-top: 20px;
+  }
+
+  .zipCode {
+    text-align: center;
+    font-size: 18px;
   }
 
   #zipCode {
@@ -678,17 +696,12 @@
     margin: 25px auto;
     display: block;
   }
-
-  .phone_label {
-    display: block;
-    text-align: center;
-    font-weight: 600;
-    font-size: 14px;
-    color: #404040;
-  }
 }
 
 .mail {
+  display: block;
+  width: 1020px;
+  height: 380px;
   -webkit-transition: opacity 0.3s ease-out;
   -moz-transition: opacity 0.3s ease-out;
   -o-transition: opacity 0.3s ease-out;
@@ -699,33 +712,31 @@
     text-align: center;
     color: #465dba;
     font-size: 20px;
-    margin-top: 15px;
+    line-height: 50px;
   }
 
   .mail_ahtung {
     text-align: center;
     color: #465dba;
-    font-size: 20px;
-    margin-top: 40px;
+    font-size: 24px;
   }
 
   .mail_text_1 {
     text-align: center;
     font-size: 20px;
-    margin-top: 20px;
   }
 
   .mail_text_2 {
     text-align: center;
     font-size: 20px;
     width: 65%;
-    margin: 20px auto 0;
+    margin: 0 auto;
   }
 
   .mail_text_3 {
     text-align: center;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   #mail_input {
@@ -734,14 +745,14 @@
     padding: 11px;
     font-size: 25px;
     color: #404040;
-    margin: 25px auto;
+    margin: 10px auto 0;
     display: block;
   }
 
   .book_image {
-    position: absolute;
     width: 150px;
-    margin-left: 10px;
+    margin-left: 435px;
+    margin-top: 10px;
   }
 }
 
@@ -751,19 +762,20 @@
   -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
   opacity: 0;
+  height: 500px;
 
   .last_step_title {
     text-align: center;
     color: #465dba;
     font-size: 20px;
-    margin-top: 15px;
+    line-height: 80px;
   }
 
   .text_1 {
     text-align: center;
     font-size: 20px;
     width: 80%;
-    margin: 20px auto 0;
+    margin: 0 auto;
   }
 
   .text_2{
@@ -814,8 +826,8 @@
   .last_step_ahtung {
     text-align: center;
     color: #465dba;
-    font-size: 14px;
-    margin-top: 25px;
+    font-size: 16px;
+    margin-top: 40px;
   }
 }
 
