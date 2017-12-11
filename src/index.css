@@ -179,7 +179,7 @@
   opacity: 0.6;
 }
 .buttons .cancel_button {
-  margin-top: 40px;
+  margin-top: 30px;
   background: #465dba;
   margin-left: 285px;
 }
@@ -523,13 +523,10 @@
   font-size: 42px;
 }
 .question form {
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 30px;
 }
 .question form div {
-  height: 40px;
+  height: 30px;
   line-height: 40px;
   font-size: 20px;
 }

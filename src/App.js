@@ -134,13 +134,17 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
+						this.hideLastChange('question_1');
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
-					},
+					}.bind(this),
 					unHoverFunction: function(e) {
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
-					}
+					},
+					formUnHoverFunction: function() {
+						this.showLastChange('question_1');
+					}.bind(this)
 				},
 				question_2: {
 					questionNum: 'question_2',
@@ -167,13 +171,17 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
+						this.hideLastChange('question_2');
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
-					},
+					}.bind(this),
 					unHoverFunction: function(e) {
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
-					}
+					},
+					formUnHoverFunction: function() {
+						this.showLastChange('question_2');
+					}.bind(this)
 				},
 				question_3: {
 					questionNum: 'question_3',
@@ -200,13 +208,17 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
+						this.hideLastChange('question_3');
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
-					},
+					}.bind(this),
 					unHoverFunction: function(e) {
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
-					}
+					},
+					formUnHoverFunction: function() {
+						this.showLastChange('question_3');
+					}.bind(this)
 				},
 				question_4: {
 					questionNum: 'question_4',
@@ -239,13 +251,17 @@ class App extends Component {
 						this.formSubmit(e)
 					}.bind(this),
 					hoverFunction: function(e) {
+						this.hideLastChange('question_4');
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 1;
-					},
+					}.bind(this),
 					unHoverFunction: function(e) {
 						let img = document.querySelector('.'+e.currentTarget.classList[0]+'_image');
 						img.style.opacity = 0;
-					}
+					},
+					formUnHoverFunction: function() {
+						this.showLastChange('question_4');
+					}.bind(this)
 				},
 				question_5: {
 					questionNum: 'range_1',
@@ -385,13 +401,15 @@ class App extends Component {
 							} else {
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.hideLastChange('question_1');
 								setTimeout(function () {
 									this.formSubmit('question_1');
 									this.showQuestion('question_2');
 									setTimeout(function () {
 										document.querySelector('.question').style.opacity = 1;
 										document.querySelector('.buttons').style.opacity = 1;
-									})
+										this.showLastChange('question_2');
+									}.bind(this), 50)
 								}.bind(this), 300)
 							}
 						}.bind(this)
@@ -407,13 +425,15 @@ class App extends Component {
 								} else {
 									document.querySelector('.question').style.opacity = 0;
 									document.querySelector('.buttons').style.opacity = 0;
+									this.hideLastChange('question_2');
 									setTimeout(function () {
 										this.formSubmit('question_2');
 										this.showQuestion('question_3');
 										setTimeout(function () {
 											document.querySelector('.question').style.opacity = 1;
 											document.querySelector('.buttons').style.opacity = 1;
-										})
+											this.showLastChange('question_3');
+										}.bind(this), 50)
 									}.bind(this), 300)
 								}
 							}.bind(this)
@@ -423,13 +443,15 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.hideLastChange('question_2');
 								this.formSubmit('question_2');
 								setTimeout(function(){
 									this.showQuestion('question_1');
 									setTimeout(function(){
 										document.querySelector('.question').style.opacity = 1;
 										document.querySelector('.buttons').style.opacity = 1;
-									})
+										this.showLastChange('question_1');
+									}.bind(this), 50)
 								}.bind(this), 300)
 							}.bind(this)
 						}
@@ -445,13 +467,15 @@ class App extends Component {
 								} else {
 									document.querySelector('.question').style.opacity = 0;
 									document.querySelector('.buttons').style.opacity = 0;
+									this.hideLastChange('question_3');
 									setTimeout(function () {
 										this.formSubmit('question_3');
 										this.showQuestion('question_4');
 										setTimeout(function () {
 											document.querySelector('.question').style.opacity = 1;
 											document.querySelector('.buttons').style.opacity = 1;
-										})
+											this.showLastChange('question_4');
+										}.bind(this), 50)
 									}.bind(this), 300)
 								}
 							}.bind(this)
@@ -461,13 +485,15 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.hideLastChange('question_3');
 								this.formSubmit('question_3');
 								setTimeout(function(){
 									this.showQuestion('question_2');
 									setTimeout(function(){
 										document.querySelector('.question').style.opacity = 1;
 										document.querySelector('.buttons').style.opacity = 1;
-									})
+										this.showLastChange('question_2');
+									}.bind(this))
 								}.bind(this), 300)
 							}.bind(this)
 						}
@@ -483,6 +509,7 @@ class App extends Component {
 								} else {
 									document.querySelector('.question').style.opacity = 0;
 									document.querySelector('.buttons').style.opacity = 0;
+									this.hideLastChange('question_4');
 									setTimeout(function () {
 										if(window.rangeElement) {
 											window.rangeElement = undefined;
@@ -502,13 +529,15 @@ class App extends Component {
 							clickFunction: function(e){
 								document.querySelector('.question').style.opacity = 0;
 								document.querySelector('.buttons').style.opacity = 0;
+								this.hideLastChange('question_4');
 								this.formSubmit('question_4');
 								setTimeout(function(){
 									this.showQuestion('question_3');
 									setTimeout(function(){
 										document.querySelector('.question').style.opacity = 1;
 										document.querySelector('.buttons').style.opacity = 1;
-									})
+										this.showLastChange('question_3');
+									}.bind(this))
 								}.bind(this), 300)
 							}.bind(this)
 						}
@@ -544,7 +573,8 @@ class App extends Component {
 									setTimeout(function(){
 										document.querySelector('.question').style.opacity = 1;
 										document.querySelector('.buttons').style.opacity = 1;
-									})
+										this.showLastChange('question_4');
+									}.bind(this))
 								}.bind(this), 300)
 							}.bind(this)
 						}
@@ -732,6 +762,8 @@ class App extends Component {
 			}
 		};
 		this.showQuestion = this.showQuestion.bind(this);
+		this.showLastChange = this.showLastChange.bind(this);
+		this.hideLastChange = this.hideLastChange.bind(this);
 	}
 	
 	componentDidMount() {
@@ -767,11 +799,14 @@ class App extends Component {
 	
 	formChange(e, questionNum) {
 		let questionForm = e.target.form;
-		let changeData = {
-			name: questionNum,
-			data: e.target.id
+		if (e.target.checked) {
+			let changeData = {
+				name: questionNum,
+				data: e.target.id
+			};
+			this.hideLastChange(questionNum);
+			this.props.onUpdateLastChange(changeData);
 		}
-		this.props.onUpdateLastChange(changeData);
 		for(let i = 0; i < this.state.questionsOptions[questionNum].variants.length; i++) {
 			if(questionForm[i].checked) {
 				this.state.buttonsOptions.questions[questionNum][0].className = 'next_button';
@@ -780,9 +815,26 @@ class App extends Component {
 			} else if (i === this.state.questionsOptions[questionNum].variants.length - 1 && !questionForm[i].checked) {
 				this.state.buttonsOptions.questions[questionNum][0].className = 'next_button disabled';
 				this.props.onShowButtons(this.state.buttonsOptions.questions[questionNum]);
+				this.props.onUpdateLastChange({name: questionNum, data: ''});
 			}
 		}
 	};
+	
+	showLastChange(questionNum) {
+		let lastChange = this.props.eventList.lastChange[questionNum];
+		if(lastChange !== '') {
+			let img = document.querySelector('.'+lastChange+'_image');
+			img.style.opacity = 1;
+		}
+	}
+	
+	hideLastChange(questionNum) {
+		let lastChange = this.props.eventList.lastChange[questionNum];
+		if(lastChange !== '') {
+			let img = document.querySelector('.'+lastChange+'_image');
+			img.style.opacity = 0;
+		}
+	}
 	
 	formSubmit(questionNum) {
 		let form = document.forms[0];

@@ -37,7 +37,10 @@ class Questions extends Component {
 				<div className="question">
 					<p className="question_title">{questionData.title}</p>
 					<p className="question_form_title">{questionData.formTitle}</p>
-					<form onChange={questionData.changeFunction}>
+					<form
+						onChange={questionData.changeFunction}
+						onMouseOut={questionData.formUnHoverFunction}
+					>
 						{questionData.variants.map((question, index) =>
 							<div
 								key={question.text}
