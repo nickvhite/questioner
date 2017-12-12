@@ -396,22 +396,7 @@ class App extends Component {
 						text: 'Далее',
 						className: 'next_button disabled',
 						clickFunction: function(e){
-							if(e.target.classList.contains('disabled')) {
-								return;
-							} else {
-								document.querySelector('.question').style.opacity = 0;
-								document.querySelector('.buttons').style.opacity = 0;
-								this.hideLastChange('question_1');
-								setTimeout(function () {
-									this.formSubmit('question_1');
-									this.showQuestion('question_2');
-									setTimeout(function () {
-										document.querySelector('.question').style.opacity = 1;
-										document.querySelector('.buttons').style.opacity = 1;
-										this.showLastChange('question_2');
-									}.bind(this), 50)
-								}.bind(this), 300)
-							}
+							this.showNextQuestion(e, 1);
 						}.bind(this)
 					}],
 					question_2: [
@@ -420,39 +405,13 @@ class App extends Component {
 							text: 'Далее',
 							className: 'next_button disabled',
 							clickFunction: function(e){
-								if(e.target.classList.contains('disabled')) {
-									return;
-								} else {
-									document.querySelector('.question').style.opacity = 0;
-									document.querySelector('.buttons').style.opacity = 0;
-									this.hideLastChange('question_2');
-									setTimeout(function () {
-										this.formSubmit('question_2');
-										this.showQuestion('question_3');
-										setTimeout(function () {
-											document.querySelector('.question').style.opacity = 1;
-											document.querySelector('.buttons').style.opacity = 1;
-											this.showLastChange('question_3');
-										}.bind(this), 50)
-									}.bind(this), 300)
-								}
+								this.showNextQuestion(e, 2);
 							}.bind(this)
 						},{
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								document.querySelector('.question').style.opacity = 0;
-								document.querySelector('.buttons').style.opacity = 0;
-								this.hideLastChange('question_2');
-								this.formSubmit('question_2');
-								setTimeout(function(){
-									this.showQuestion('question_1');
-									setTimeout(function(){
-										document.querySelector('.question').style.opacity = 1;
-										document.querySelector('.buttons').style.opacity = 1;
-										this.showLastChange('question_1');
-									}.bind(this), 50)
-								}.bind(this), 300)
+								this.showPrewiousQuestion(2);
 							}.bind(this)
 						}
 					],
@@ -462,39 +421,13 @@ class App extends Component {
 							text: 'Далее',
 							className: 'next_button disabled',
 							clickFunction: function(e){
-								if(e.target.classList.contains('disabled')) {
-									return;
-								} else {
-									document.querySelector('.question').style.opacity = 0;
-									document.querySelector('.buttons').style.opacity = 0;
-									this.hideLastChange('question_3');
-									setTimeout(function () {
-										this.formSubmit('question_3');
-										this.showQuestion('question_4');
-										setTimeout(function () {
-											document.querySelector('.question').style.opacity = 1;
-											document.querySelector('.buttons').style.opacity = 1;
-											this.showLastChange('question_4');
-										}.bind(this), 50)
-									}.bind(this), 300)
-								}
+								this.showNextQuestion(e, 3);
 							}.bind(this)
 						},{
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								document.querySelector('.question').style.opacity = 0;
-								document.querySelector('.buttons').style.opacity = 0;
-								this.hideLastChange('question_3');
-								this.formSubmit('question_3');
-								setTimeout(function(){
-									this.showQuestion('question_2');
-									setTimeout(function(){
-										document.querySelector('.question').style.opacity = 1;
-										document.querySelector('.buttons').style.opacity = 1;
-										this.showLastChange('question_2');
-									}.bind(this))
-								}.bind(this), 300)
+								this.showPrewiousQuestion(3);
 							}.bind(this)
 						}
 					],
@@ -504,41 +437,13 @@ class App extends Component {
 							text: 'Далее',
 							className: 'next_button disabled',
 							clickFunction: function(e){
-								if(e.target.classList.contains('disabled')) {
-									return;
-								} else {
-									document.querySelector('.question').style.opacity = 0;
-									document.querySelector('.buttons').style.opacity = 0;
-									this.hideLastChange('question_4');
-									setTimeout(function () {
-										if(window.rangeElement) {
-											window.rangeElement = undefined;
-										}
-										this.formSubmit('question_4');
-										this.showQuestion('question_5');
-										setTimeout(function () {
-											document.querySelector('.question').style.opacity = 1;
-											document.querySelector('.buttons').style.opacity = 1;
-										})
-									}.bind(this), 300)
-								}
+								this.showNextQuestion(e, 4);
 							}.bind(this)
 						},{
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								document.querySelector('.question').style.opacity = 0;
-								document.querySelector('.buttons').style.opacity = 0;
-								this.hideLastChange('question_4');
-								this.formSubmit('question_4');
-								setTimeout(function(){
-									this.showQuestion('question_3');
-									setTimeout(function(){
-										document.querySelector('.question').style.opacity = 1;
-										document.querySelector('.buttons').style.opacity = 1;
-										this.showLastChange('question_3');
-									}.bind(this))
-								}.bind(this), 300)
+								this.showPrewiousQuestion(4);
 							}.bind(this)
 						}
 					],
@@ -548,34 +453,13 @@ class App extends Component {
 							text: 'Далее',
 							className: 'next_button',
 							clickFunction: function(e){
-								document.querySelector('.question').style.opacity = 0;
-								document.querySelector('.buttons').style.opacity = 0;
-								this.rangeSubmit('question_5');
-								setTimeout(function () {
-									window.rangeElement.destroy();
-									window.rangeElement = undefined;
-									this.showQuestion('question_6');
-									setTimeout(function () {
-										document.querySelector('.question').style.opacity = 1;
-										document.querySelector('.buttons').style.opacity = 1;
-									})
-								}.bind(this), 300)
+								this.showNextQuestion(e, 5);
 							}.bind(this)
 						},{
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								document.querySelector('.question').style.opacity = 0;
-								document.querySelector('.buttons').style.opacity = 0;
-								this.rangeSubmit('question_5');
-								setTimeout(function(){
-									this.showQuestion('question_4');
-									setTimeout(function(){
-										document.querySelector('.question').style.opacity = 1;
-										document.querySelector('.buttons').style.opacity = 1;
-										this.showLastChange('question_4');
-									}.bind(this))
-								}.bind(this), 300)
+								this.showPrewiousQuestion(5);
 							}.bind(this)
 						}
 					],
@@ -604,18 +488,7 @@ class App extends Component {
 							text: 'Назад',
 							className: 'previous_button',
 							clickFunction: function(e){
-								document.querySelector('.question').style.opacity = 0;
-								document.querySelector('.buttons').style.opacity = 0;
-								this.rangeSubmit('question_6');
-								setTimeout(function(){
-									window.rangeElement.destroy();
-									window.rangeElement = undefined;
-									this.showQuestion('question_5');
-									setTimeout(function(){
-										document.querySelector('.question').style.opacity = 1;
-										document.querySelector('.buttons').style.opacity = 1;
-									})
-								}.bind(this), 300)
+								this.showPrewiousQuestion(6);
 							}.bind(this)
 						}
 					]
@@ -764,6 +637,8 @@ class App extends Component {
 		this.showQuestion = this.showQuestion.bind(this);
 		this.showLastChange = this.showLastChange.bind(this);
 		this.hideLastChange = this.hideLastChange.bind(this);
+		this.showNextQuestion = this.showNextQuestion.bind(this);
+		this.showPrewiousQuestion = this.showPrewiousQuestion.bind(this);
 	}
 	
 	componentDidMount() {
@@ -885,6 +760,60 @@ class App extends Component {
 		}
 	}
 
+	showNextQuestion(e, questionNum) {
+		if(e.target.classList.contains('disabled')) {
+			return;
+		} else {
+			document.querySelector('.question').style.opacity = 0;
+			document.querySelector('.buttons').style.opacity = 0;
+			if(questionNum <= 4) {
+				this.hideLastChange(`question_${questionNum}`);
+			}
+			setTimeout(function () {
+				if (questionNum <= 4) {
+					this.formSubmit(`question_${questionNum}`);
+				} else {
+					this.rangeSubmit(`question_${questionNum}`);
+				}
+				if (questionNum === 4 && window.rangeElement) {
+					window.rangeElement = undefined;
+				} else if (questionNum === 5) {
+					window.rangeElement.destroy();
+					window.rangeElement = undefined;
+				}
+				this.showQuestion(`question_${questionNum + 1}`);
+				setTimeout(function () {
+					document.querySelector('.question').style.opacity = 1;
+					document.querySelector('.buttons').style.opacity = 1;
+					if(questionNum < 4) {
+						this.showLastChange(`question_${questionNum + 1}`);
+					}
+				}.bind(this), 50)
+			}.bind(this), 300)
+		}
+	}
+	
+	showPrewiousQuestion(questionNum) {
+		document.querySelector('.question').style.opacity = 0;
+		document.querySelector('.buttons').style.opacity = 0;
+		if (questionNum <= 4) {
+			this.hideLastChange(`question_${questionNum}`);
+			this.formSubmit(`question_${questionNum}`);
+		} else {
+			this.rangeSubmit(`question_${questionNum}`);
+		}
+		setTimeout(function(){
+			this.showQuestion(`question_${questionNum - 1}`);
+			setTimeout(function(){
+				document.querySelector('.question').style.opacity = 1;
+				document.querySelector('.buttons').style.opacity = 1;
+				if(questionNum <= 5) {
+					this.showLastChange(`question_${questionNum - 1}`);
+				}
+			}.bind(this), 50)
+		}.bind(this), 300)
+	}
+	
 	mask(inputName, mask, evt) {
 	  try {
 	    var text = document.getElementById(inputName);
