@@ -112,11 +112,11 @@
 .politick .politick_container {
   position: relative;
   width: 710px;
-  height: 595px;
+  height: 570px;
   background: white;
   padding: 25px 45px;
   text-align: center;
-  margin: 25px auto 0;
+  margin: 15px auto 0;
 }
 .politick .politick_container .politick_text p {
   margin-top: 20px;
@@ -479,12 +479,14 @@
   color: #465dba;
   position: absolute;
   width: 350px;
-  font-size: 17px;
+  font-size: 15px;
   margin-top: 15px;
+  font-weight: 600;
 }
 .question .question_form_title {
   margin: 80px 0 0;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 600;
 }
 .question .question_form {
   border: 1px solid #928787;
@@ -579,6 +581,19 @@
   color: #404040;
   margin: 25px auto;
   display: block;
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+.phone #zipCode:before,
+.phone #zipCode:after {
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
 }
 .mail {
   display: block;
@@ -624,6 +639,19 @@
   color: #404040;
   margin: 10px auto 0;
   display: block;
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+.mail #mail_input:before,
+.mail #mail_input:after {
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
 }
 .mail .book_image {
   width: 150px;

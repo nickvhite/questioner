@@ -18,9 +18,9 @@ class App extends Component {
 		super(props);
 		this.state = {
 			greetingOptions: {
-				text_1: 'Хочу',
+				text_1: 'Хотите',
 				text_2: 'купить недвижимость',
-				text_3: 'в Краснодаре'
+				text_3: 'в Краснодаре?'
 			},
 			cancelOptions: {
 				text: [
@@ -284,9 +284,13 @@ class App extends Component {
 			phoneOptions: {
 				title: 'Система приступила к подбору вариантов.',
 				text: 'Введите номер телефона, по которому Вам сообщат результат',
-				inputFunction: function(e) {
-					this.mask('zipCode', '+7(000)000-00-00', e);
-				}.bind(this)
+				changeFunction: function(e) {
+					if(e.target.value.length === 18) {
+						document.querySelector('.phone_button').classList.remove('disabled');
+					} else {
+						document.querySelector('.phone_button').classList.add('disabled');
+					}
+				}
 			},
 			mailOptions: {
 				title: 'СПАСИБО! МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИЕ 20 МИНУТ!',
@@ -812,43 +816,6 @@ class App extends Component {
 				}
 			}.bind(this), 50)
 		}.bind(this), 300)
-	}
-	
-	mask(inputName, mask, evt) {
-	  try {
-	    var text = document.getElementById(inputName);
-	    var value = text.value;
-	    try {
-	      var e = (evt.which) ? evt.which : evt.keyCode;
-	      if ( e == 46 || e == 8 ) {
-	        text.value = "";
-	        return;
-	      }
-	    } catch (e1) {}
-	    var literalPattern=/[0\*]/;
-	    var numberPattern=/[0-9]/;
-	    var newValue = "";
-	    for (var vId = 0, mId = 0 ; mId < mask.length ; ) {
-	      if (mId >= value.length)
-	        break;
-	      if (mask[mId] == '0' && value[vId].match(numberPattern) == null) {
-	        break;
-	      }
-	      while (mask[mId].match(literalPattern) == null) {
-	        if (value[vId] == mask[mId])
-	          break;
-	      newValue += mask[mId++];
-	    }
-	    newValue += value[vId++];
-	    mId++;
-	  }
-	    text.value = newValue;
-	    if(text.value.length === 16) {
-	    	document.querySelector('.phone_button').className = 'button phone_button'
-	    } else {
-	    	document.querySelector('.phone_button').className = 'button phone_button disabled'
-	    }
-	  } catch(e) {}
 	}
 
 	postData() {

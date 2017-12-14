@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MaskedInput from 'react-text-mask';
 
 class Phone extends Component {
 	render() {
@@ -20,7 +21,13 @@ class Phone extends Component {
 					</div>
 				</div>
 				<p className="zipCode">{phoneData.text}</p>
-				<input type="text" id="zipCode" onInput={phoneData.inputFunction} defaultValue="+7(___)___-____" />
+				<MaskedInput
+				  mask={['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, ' ', /\d/, /\d/]}
+				  id="zipCode"
+				  placeholder="+7 (XXX) XXX XX XX"
+				  guide={false}
+				  onChange={phoneData.changeFunction}
+				/>
 			</div>
 		)
 	}
