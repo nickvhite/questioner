@@ -310,16 +310,16 @@ class App extends Component {
 				li_4: 'Дождитесь письма с Вашей ИНСТРУКЦИЕЙ.',
 				links: [
 					{
-						src: 'www.mail.com',
+						src: 'https://mail.ru/',
 						image: 'mailru'
 					},{
-						src: 'mail.yandex.ru',
+						src: 'https://mail.yandex.ru/',
 						image: 'yandex'
 					},{
-						src: 'www.gmail.com',
+						src: 'https://mail.google.com',
 						image: 'gmail'
 					},{
-						src: 'www.icloud.com',
+						src: 'https://www.icloud.com/',
 						image: 'icloud'
 					}
 				],
